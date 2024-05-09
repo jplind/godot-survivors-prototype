@@ -34,12 +34,11 @@ func take_damage():
 
 func update_health_bar(value):
 	health_bar.value = value
-	print(str(health) + " " + str(health_bar.value) + " " + str(health_bar.max_value))
 
 func die():
 	dead = true
 	Events.player_died.emit()
-	self.modulate = Color.GRAY
+	self.modulate = Color.DARK_GRAY
 
 func on_battle_started():
 	hit_timer.start()
