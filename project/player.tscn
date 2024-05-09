@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://cke288rhj6ajb"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_mo10i"]
+[ext_resource type="Texture2D" uid="uid://b5slahelof7wj" path="res://icon.svg" id="2_v54hu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cs5r"]
+size = Vector2(120, 120)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6k5r5"]
+vertices = PackedVector2Array(950, 630, -950, 630, -950, -630, 950, -630)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -640, 960, -640, 960, 640, -960, 640)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_mo10i")
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_4cs5r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v54hu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_6k5r5")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -100.0
+offset_right = 60.0
+offset_bottom = -73.0
+grow_horizontal = 2
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HitTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

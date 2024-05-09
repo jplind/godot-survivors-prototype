@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn1v41nj5v32j"]
+
+[ext_resource type="Texture2D" uid="uid://b5slahelof7wj" path="res://icon.svg" id="1_al2l2"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_x1iab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy4w5"]
+size = Vector2(120, 120)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_x1iab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.825653, 0, 0.127191, 1)
+texture = ExtResource("1_al2l2")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+path_desired_distance = 30.0
+target_desired_distance = 30.0
+path_max_distance = 200.0
+avoidance_enabled = true
+radius = 24.0
+neighbor_distance = 300.0
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_xy4w5")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
