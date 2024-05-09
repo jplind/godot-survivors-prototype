@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://cke288rhj6ajb"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_mo10i"]
-[ext_resource type="Texture2D" uid="uid://b5slahelof7wj" path="res://icon.svg" id="2_v54hu"]
+[ext_resource type="Script" path="res://player.gd" id="1_6x03l"]
+[ext_resource type="Texture2D" uid="uid://dj5yvob2m28q8" path="res://vampire.png" id="2_pnok8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cs5r"]
-size = Vector2(120, 120)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fytfu"]
+radius = 16.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6k5r5"]
 vertices = PackedVector2Array(950, 630, -950, 630, -950, -630, 950, -630)
@@ -13,18 +13,20 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -640, 960, -640, 
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
 collision_mask = 2
-script = ExtResource("1_mo10i")
-
-[node name="HitBox" type="Area2D" parent="."]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_4cs5r")
+script = ExtResource("1_6x03l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_v54hu")
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_pnok8")
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_fytfu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -37,10 +39,10 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.0
-offset_top = -100.0
-offset_right = 60.0
-offset_bottom = -73.0
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = -35.0
 grow_horizontal = 2
 step = 1.0
 value = 100.0
@@ -51,4 +53,4 @@ unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hit_box_area_entered"]

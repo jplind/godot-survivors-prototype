@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=8 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://player.tscn" id="1_o0y0b"]
+[ext_resource type="PackedScene" uid="uid://8vwoyuirtr0i" path="res://attack_launcher.tscn" id="2_q86cv"]
 [ext_resource type="PackedScene" uid="uid://cu736ib6yc4hk" path="res://enemy_spawner.tscn" id="3_40lvd"]
 [ext_resource type="Texture2D" uid="uid://cgar40hoqirb3" path="res://ground_05.png" id="4_85uua"]
 
@@ -17,6 +18,8 @@ sources/0 = SubResource("TileSetAtlasSource_vs1f1")
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_15oof")
+
+[node name="AttackLauncher" parent="." instance=ExtResource("2_q86cv")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_40lvd")]
 unique_name_in_owner = true

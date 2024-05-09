@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@onready var hit_box = %HitBox
+@onready var hurt_box = %HurtBox
 @onready var health_bar = %HealthBar
 @onready var hit_timer = %HitTimer
-var speed : float = 160
+@onready var sprite = %Sprite2D
+var speed : float = 150
 var direction : Vector2 = Vector2.ZERO
 var health : int = 100
 var dead = false
@@ -13,6 +14,10 @@ func _ready():
 
 func get_input():
 	direction = Input.get_vector("left", "right", "up", "down")
+	if direction.x < 0:
+		sprite.flip_h = false
+	elif direction.x > 0:
+		sprite.flip_h = true
 	velocity = direction * speed
 
 func _physics_process(delta):
@@ -21,11 +26,11 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	if hit_timer.is_stopped():
-		if hit_box.has_overlapping_areas():
+		if hurt_box.has_overlapping_areas():
 			take_damage()
 
 func take_damage():
-	for enemy in hit_box.get_overlapping_areas():
+	for enemy in hurt_box.get_overlapping_areas():
 		health = max(health - 10, 0)
 		update_health_bar(health)
 		if health <= 0:

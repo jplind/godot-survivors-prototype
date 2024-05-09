@@ -1,7 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
 @onready var navigation_agent_2d = %NavigationAgent2D
-var speed = 50
+var speed = 65
 var steering_weight : float = 0.8
 var player
 var march_velocity
@@ -22,4 +22,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func despawn():
 	Events.enemy_despawned.emit()
+	queue_free()
+
+func _on_hurt_box_area_entered(area):
 	queue_free()

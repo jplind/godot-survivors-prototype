@@ -1,32 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn1v41nj5v32j"]
+[gd_scene load_steps=5 format=3 uid="uid://cn1v41nj5v32j"]
 
-[ext_resource type="Texture2D" uid="uid://b5slahelof7wj" path="res://icon.svg" id="1_al2l2"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_x1iab"]
+[ext_resource type="Texture2D" uid="uid://cgeclyo3ogfd6" path="res://curse_skull.png" id="2_hsbn8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy4w5"]
-size = Vector2(120, 120)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqcdt"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwg3d"]
+radius = 20.0
 
 [node name="Enemy" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
 collision_mask = 2
 script = ExtResource("1_x1iab")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.825653, 0, 0.127191, 1)
-texture = ExtResource("1_al2l2")
+texture_filter = 1
+position = Vector2(1, 8)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hsbn8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-path_desired_distance = 30.0
-target_desired_distance = 30.0
+target_desired_distance = 20.0
 path_max_distance = 200.0
 avoidance_enabled = true
-radius = 24.0
-neighbor_distance = 300.0
+radius = 20.0
+neighbor_distance = 200.0
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_jqcdt")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_xy4w5")
+shape = SubResource("CircleShape2D_pwg3d")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

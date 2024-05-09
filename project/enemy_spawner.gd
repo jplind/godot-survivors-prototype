@@ -5,7 +5,7 @@ extends Node2D
 @onready var enemy_spawn_timer = %EnemySpawnTimer
 var player
 var spawn_distance = 600
-var player_direction_weight = 0.8
+var player_direction_weight = 2
 var enemy_count : int = 0
 
 func _ready():
