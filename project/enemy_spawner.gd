@@ -13,7 +13,9 @@ func _ready():
 	Events.battle_started.connect(on_battle_started)
 
 func _on_enemy_spawn_timer_timeout():
-	if enemy_count > 500:
+	if player.dead:
+		return
+	if enemy_count > 400:
 		return
 	var enemy = enemy_scene.instantiate()
 	enemies.add_child(enemy)

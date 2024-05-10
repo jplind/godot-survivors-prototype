@@ -42,6 +42,7 @@ func update_health_bar(value):
 
 func die():
 	dead = true
+	direction = Vector2.ZERO
 	Events.player_died.emit()
 	self.modulate = Color.DARK_GRAY
 

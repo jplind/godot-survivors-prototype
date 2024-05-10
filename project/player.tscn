@@ -13,7 +13,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-960, -640, 960, -640, 
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_6x03l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,6 +24,7 @@ texture = ExtResource("2_pnok8")
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_fytfu")

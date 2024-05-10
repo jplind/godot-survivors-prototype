@@ -1,5 +1,6 @@
 extends Node2D
 
+var damage: int = 500
 var speed : float = 600
 var direction : Vector2 = Vector2.UP
 
