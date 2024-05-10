@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cke288rhj6ajb"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_6x03l"]
-[ext_resource type="Texture2D" uid="uid://dj5yvob2m28q8" path="res://vampire.png" id="2_pnok8"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ysopc"]
+[ext_resource type="Texture2D" uid="uid://dj5yvob2m28q8" path="res://Sprites/vampire.png" id="2_5kexh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fytfu"]
 radius = 16.0
@@ -14,13 +14,13 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 0
-script = ExtResource("1_6x03l")
+script = ExtResource("1_ysopc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("2_pnok8")
+texture = ExtResource("2_5kexh")
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true

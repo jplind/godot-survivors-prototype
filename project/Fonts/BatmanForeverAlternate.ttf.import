@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dkgglilqpmisb"
-path="res://.godot/imported/Dark Crystal Outline.ttf-5a9aa2b049d241ba292bc354a1bf5297.fontdata"
+uid="uid://domipp7eccfy4"
+path="res://.godot/imported/BatmanForeverAlternate.ttf-dfd88d3ef88dcc7682f33f70cb3b500f.fontdata"
 
 [deps]
 
-source_file="res://Dark Crystal Outline.ttf"
-dest_files=["res://.godot/imported/Dark Crystal Outline.ttf-5a9aa2b049d241ba292bc354a1bf5297.fontdata"]
+source_file="res://Fonts/BatmanForeverAlternate.ttf"
+dest_files=["res://.godot/imported/BatmanForeverAlternate.ttf-dfd88d3ef88dcc7682f33f70cb3b500f.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=2
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj5yvob2m28q8"
-path="res://.godot/imported/vampire.png-dc9f060cfa931e720449f6463b8be8d7.ctex"
+uid="uid://cgeclyo3ogfd6"
+path="res://.godot/imported/curse_skull.png-be3e19eda3de5bc976678e8efa936b46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vampire.png"
-dest_files=["res://.godot/imported/vampire.png-dc9f060cfa931e720449f6463b8be8d7.ctex"]
+source_file="res://Sprites/curse_skull.png"
+dest_files=["res://.godot/imported/curse_skull.png-be3e19eda3de5bc976678e8efa936b46.ctex"]
 
 [params]
 

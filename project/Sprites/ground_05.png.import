@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgeclyo3ogfd6"
-path="res://.godot/imported/curse_skull.png-65ccc5b4f97850f0cba9468f2c64f032.ctex"
+uid="uid://cgar40hoqirb3"
+path="res://.godot/imported/ground_05.png-6f1a64addda45bd4e6ea6036494a1263.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://curse_skull.png"
-dest_files=["res://.godot/imported/curse_skull.png-65ccc5b4f97850f0cba9468f2c64f032.ctex"]
+source_file="res://Sprites/ground_05.png"
+dest_files=["res://.godot/imported/ground_05.png-6f1a64addda45bd4e6ea6036494a1263.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://cgcqsv5lajjoe"]
 
-[ext_resource type="FontFile" uid="uid://domipp7eccfy4" path="res://BatmanForeverAlternate.ttf" id="1_luey0"]
+[ext_resource type="FontFile" uid="uid://domipp7eccfy4" path="res://Fonts/BatmanForeverAlternate.ttf" id="1_luey0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wq4o"]
 bg_color = Color(1, 1, 1, 0.882353)

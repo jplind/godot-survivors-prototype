@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Survivors"
-run/main_scene="res://main.tscn"
+run/main_scene="res://Scripts/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/curse_skull.png"
 
 [autoload]
 
-Events="*res://Events.gd"
+Events="*res://Scripts/Events.gd"
 
 [display]
 
