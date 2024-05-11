@@ -22,6 +22,10 @@ func _physics_process(delta):
 	#position = position.move_toward(navigation_agent_2d.get_next_path_position(), movement_delta)
 	velocity = position.direction_to(navigation_agent_2d.get_next_path_position()) * speed
 	move_and_slide()
+	if velocity.x <= 0:
+		$Sprite2D.flip_h = false
+	else:
+		$Sprite2D.flip_h = true
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	#position = position.move_toward(position + safe_velocity, movement_delta)

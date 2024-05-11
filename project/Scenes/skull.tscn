@@ -26,6 +26,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_jkpim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_2mqn6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -43,6 +44,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
 shape = SubResource("CircleShape2D_jqcdt")
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -50,6 +52,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 shape = SubResource("CircleShape2D_pwg3d")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
