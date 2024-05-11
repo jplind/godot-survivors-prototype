@@ -11,7 +11,7 @@ var movement_delta
 
 func _physics_process(delta):
 	if position.distance_to(player.position) > 1000:
-		queue_free()
+		despawn()
 	navigation_agent_2d.target_position = player.position
 	movement_delta = speed * delta
 	if navigation_agent_2d.is_navigation_finished():
