@@ -31,4 +31,5 @@ func despawn():
 
 func _on_hurt_box_area_entered(area):
 	health -= 0
+	Events.enemy_damaged.emit(500, position)
 	queue_free()

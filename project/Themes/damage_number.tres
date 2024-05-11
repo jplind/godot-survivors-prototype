@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cldons7s4b6w7"]
+
+[ext_resource type="FontFile" uid="uid://c0dyp000u863o" path="res://Fonts/Lunchtime Doubly So Regular.ttf" id="1_mwgh5"]
+
+[resource]
+Label/fonts/font = ExtResource("1_mwgh5")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=12 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cgar40hoqirb3" path="res://Sprites/ground_05.png" id="4_85uua"]
 [ext_resource type="FontFile" uid="uid://dkgglilqpmisb" path="res://Fonts/Dark Crystal Outline.ttf" id="6_qo8fj"]
 [ext_resource type="Theme" uid="uid://cgcqsv5lajjoe" path="res://Themes/button_theme.tres" id="7_yqa01"]
+[ext_resource type="Script" path="res://Scripts/damag_number_generator.gd" id="8_j53hx"]
+[ext_resource type="PackedScene" uid="uid://b0rwu8wjsft0r" path="res://Scenes/damage_number.tscn" id="9_c4h2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs1f1"]
 resource_name = "base"
@@ -87,5 +89,9 @@ size_flags_horizontal = 4
 focus_mode = 0
 theme = ExtResource("7_yqa01")
 text = "Retry"
+
+[node name="DamageNumberGenerator" type="Node2D" parent="."]
+script = ExtResource("8_j53hx")
+damage_number_scene = ExtResource("9_c4h2d")
 
 [connection signal="pressed" from="CanvasLayer/GameoverMenu/RetryButton" to="." method="_on_restart_button_pressed"]

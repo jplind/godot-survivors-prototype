@@ -11,8 +11,8 @@ func _ready():
 
 func launch_attack_object():
 	var attack_object = attack_object_scene.instantiate()
-	launched_objects.add_child(attack_object)
 	attack_object.position = player.position
+	launched_objects.add_child(attack_object)
 
 func _on_launch_timer_timeout():
 	launch_attack_object()
