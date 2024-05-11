@@ -1,29 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn1v41nj5v32j"]
+[gd_scene load_steps=7 format=3 uid="uid://cb7aom16td1cs"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_v03j1"]
-[ext_resource type="Texture2D" uid="uid://cgeclyo3ogfd6" path="res://Sprites/curse_skull.png" id="2_x8xua"]
-[ext_resource type="Shape2D" uid="uid://4mk7v3vybhkf" path="res://Collision Shapes/cs_skull.tres" id="3_yejy8"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_pclne"]
+[ext_resource type="Resource" uid="uid://ckkvxloxq1len" path="res://Resources/snail.tres" id="2_baon4"]
+[ext_resource type="Texture2D" uid="uid://bnot4i2dh64gk" path="res://Sprites/giant_snail.png" id="2_y4ts0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mqn6"]
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqcdt"]
-radius = 20.0
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pwg3d"]
-radius = 20.0
+radius = 25.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Snail" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 slide_on_ceiling = false
-script = ExtResource("1_v03j1")
+script = ExtResource("1_pclne")
+enemy_data = ExtResource("2_baon4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1, 8)
 scale = Vector2(2, 2)
-texture = ExtResource("2_x8xua")
+texture = ExtResource("2_y4ts0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("3_yejy8")
+shape = SubResource("CircleShape2D_2mqn6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true

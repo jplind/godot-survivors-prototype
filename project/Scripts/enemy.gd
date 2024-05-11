@@ -1,19 +1,22 @@
 class_name Enemy extends CharacterBody2D
 
-@onready var navigation_agent_2d = %NavigationAgent2D
-
-var health : int = 1000
-var speed = 65
+@export var enemy_data : EnemyData
+var health : int
+var speed : int
 var steering_weight : float = 0.8
 var player
-var march_velocity
-var movement_delta
+#var movement_delta
+@onready var navigation_agent_2d = %NavigationAgent2D
+
+func _ready():
+	health = enemy_data.health
+	speed = enemy_data.speed
 
 func _physics_process(delta):
 	if position.distance_to(player.position) > 1000:
 		despawn()
 	navigation_agent_2d.target_position = player.position
-	movement_delta = speed * delta
+	#movement_delta = speed * delta
 	if navigation_agent_2d.is_navigation_finished():
 		return
 	#position = position.move_toward(navigation_agent_2d.get_next_path_position(), movement_delta)
@@ -30,6 +33,7 @@ func despawn():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	health -= 0
+	health -= 500
 	Events.enemy_damaged.emit(500, position)
-	despawn()
+	if health <= 0:
+		despawn()

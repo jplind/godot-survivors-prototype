@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var enemy_scene : PackedScene
+@export var enemy_scenes : Array[PackedScene]
 @onready var enemies = %Enemies
 @onready var enemy_spawn_timer = %EnemySpawnTimer
 var player
@@ -17,7 +17,7 @@ func _on_enemy_spawn_timer_timeout():
 		return
 	if enemy_count > 400:
 		return
-	var enemy = enemy_scene.instantiate()
+	var enemy = enemy_scenes.pick_random().instantiate()
 	enemies.add_child(enemy)
 	var random_direction : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	if player.direction:
