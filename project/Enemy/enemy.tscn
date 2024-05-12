@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://wbp24cg67pxh"]
+[gd_scene load_steps=6 format=3 uid="uid://cn1v41nj5v32j"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_mt2h6"]
-[ext_resource type="Texture2D" uid="uid://cgeclyo3ogfd6" path="res://Sprites/curse_skull.png" id="2_jkpim"]
-[ext_resource type="Resource" uid="uid://ujoog3n8tkhp" path="res://Resources/skull.tres" id="2_rsk1n"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_7rt6w"]
+[ext_resource type="Texture2D" uid="uid://cgeclyo3ogfd6" path="res://Enemy/Skull/curse_skull.png" id="2_eay8b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2mqn6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0c26j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqcdt"]
 radius = 20.0
@@ -16,18 +15,16 @@ radius = 20.0
 collision_layer = 2
 collision_mask = 2
 slide_on_ceiling = false
-script = ExtResource("1_mt2h6")
-enemy_data = ExtResource("2_rsk1n")
+script = ExtResource("1_7rt6w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 8)
 scale = Vector2(2, 2)
-texture = ExtResource("2_jkpim")
+texture = ExtResource("2_eay8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_2mqn6")
+shape = SubResource("CircleShape2D_0c26j")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
@@ -44,7 +41,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-visible = false
 shape = SubResource("CircleShape2D_jqcdt")
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -52,8 +48,12 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 shape = SubResource("CircleShape2D_pwg3d")
+
+[node name="StunTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

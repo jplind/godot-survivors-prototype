@@ -13,7 +13,7 @@ config_version=5
 config/name="Survivors"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Sprites/curse_skull.png"
+config/icon="res://Enemy/Skull/curse_skull.png"
 
 [autoload]
 
@@ -25,6 +25,10 @@ window/size/viewport_width=960
 window/size/viewport_height=640
 window/size/resizable=false
 window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/movie_file="E:/Petter/Videos/Godot/survivors.avi"
 
 [input]
 

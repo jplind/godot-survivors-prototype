@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var sprite = %Sprite2D
 var speed : float = 150
 var direction : Vector2 = Vector2.ZERO
-var health : int = 100
+var health : int = 200
 var dead = false
 
 func _ready():
@@ -20,11 +20,11 @@ func get_input():
 		sprite.flip_h = true
 	velocity = direction * speed
 
-func _physics_process(delta):
+func _process(delta):
 	if dead:
 		return
 	get_input()
-	move_and_slide()
+	position += direction * speed * delta
 	if hit_timer.is_stopped():
 		if hurt_box.has_overlapping_areas():
 			take_damage()

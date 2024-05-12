@@ -1,17 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=20 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
 [ext_resource type="PackedScene" uid="uid://8vwoyuirtr0i" path="res://Scenes/attack_launcher.tscn" id="2_q86cv"]
-[ext_resource type="PackedScene" uid="uid://cu736ib6yc4hk" path="res://Scenes/enemy_spawner.tscn" id="3_40lvd"]
+[ext_resource type="Script" path="res://Enemy/enemy_spawner.gd" id="3_vu7ch"]
 [ext_resource type="Texture2D" uid="uid://cgar40hoqirb3" path="res://Sprites/ground_05.png" id="4_85uua"]
+[ext_resource type="PackedScene" uid="uid://bvf5jwhieeswa" path="res://Enemy/Skull/enemy_skull.tscn" id="4_vx8dx"]
+[ext_resource type="PackedScene" uid="uid://cf76r8lyy0bww" path="res://Enemy/Snail/enemy_snail.tscn" id="5_qdixe"]
+[ext_resource type="PackedScene" uid="uid://bhgfr6o7ynxoo" path="res://Enemy/Fly/enemy_fly.tscn" id="6_dcgny"]
 [ext_resource type="FontFile" uid="uid://dkgglilqpmisb" path="res://Fonts/Dark Crystal Outline.ttf" id="6_qo8fj"]
 [ext_resource type="Theme" uid="uid://cgcqsv5lajjoe" path="res://Themes/button_theme.tres" id="7_yqa01"]
 [ext_resource type="Script" path="res://Scripts/damag_number_generator.gd" id="8_j53hx"]
 [ext_resource type="PackedScene" uid="uid://b0rwu8wjsft0r" path="res://Scenes/damage_number.tscn" id="9_c4h2d"]
+[ext_resource type="Script" path="res://Scenes/level_up_card.gd" id="10_4lvul"]
 [ext_resource type="Script" path="res://Scripts/gem_spawner.gd" id="10_hl0bs"]
 [ext_resource type="PackedScene" uid="uid://1joo3v0hb4ew" path="res://Scenes/collectable.tscn" id="11_l174j"]
 [ext_resource type="Script" path="res://Scripts/experience_counter.gd" id="12_rw78r"]
+[ext_resource type="Script" path="res://Scripts/level_up_manager.gd" id="15_e3rha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs1f1"]
 resource_name = "base"
@@ -28,8 +33,19 @@ script = ExtResource("1_15oof")
 
 [node name="AttackLauncher" parent="." instance=ExtResource("2_q86cv")]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("3_40lvd")]
+[node name="EnemySpawner" type="Node2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("3_vu7ch")
+enemy_scenes = Array[PackedScene]([ExtResource("4_vx8dx"), ExtResource("5_qdixe"), ExtResource("6_dcgny")])
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
+[node name="Enemies" type="Node2D" parent="EnemySpawner"]
+unique_name_in_owner = true
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_o0y0b")]
 unique_name_in_owner = true
@@ -110,6 +126,56 @@ focus_mode = 0
 theme = ExtResource("7_yqa01")
 text = "Retry"
 
+[node name="LevelUpMenu" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(400, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/LevelUpMenu"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelUpMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LevelUpCard" type="Button" parent="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("7_yqa01")
+text = "Option 1"
+script = ExtResource("10_4lvul")
+
+[node name="LevelUpCard2" type="Button" parent="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("7_yqa01")
+text = "Option 2"
+script = ExtResource("10_4lvul")
+
+[node name="LevelUpCard3" type="Button" parent="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer"]
+process_mode = 2
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("7_yqa01")
+text = "Option 3"
+script = ExtResource("10_4lvul")
+
 [node name="DamageNumberGenerator" type="Node2D" parent="."]
 script = ExtResource("8_j53hx")
 damage_number_scene = ExtResource("9_c4h2d")
@@ -121,7 +187,14 @@ collectable_scene = ExtResource("11_l174j")
 [node name="SpawnedGems" type="Node2D" parent="GemSpawner"]
 unique_name_in_owner = true
 
-[node name="ExperienceCounter" type="Node2D" parent="."]
+[node name="ExperienceCounter" type="Node" parent="."]
 script = ExtResource("12_rw78r")
 
+[node name="LevelUpManager" type="Node" parent="."]
+script = ExtResource("15_e3rha")
+
+[connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/GameoverMenu/RetryButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer/LevelUpCard" to="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer/LevelUpCard" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer/LevelUpCard2" to="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer/LevelUpCard2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer/LevelUpCard3" to="CanvasLayer/LevelUpMenu/CenterContainer/HBoxContainer/LevelUpCard3" method="_on_pressed"]

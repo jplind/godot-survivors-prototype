@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgeclyo3ogfd6"
-path="res://.godot/imported/curse_skull.png-be3e19eda3de5bc976678e8efa936b46.ctex"
+uid="uid://cvvk0dpbstdkj"
+path="res://.godot/imported/giant_blowfly.png-8238b7bec631c114e5a1a557ea55bd14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/curse_skull.png"
-dest_files=["res://.godot/imported/curse_skull.png-be3e19eda3de5bc976678e8efa936b46.ctex"]
+source_file="res://Enemy/Fly/giant_blowfly.png"
+dest_files=["res://.godot/imported/giant_blowfly.png-8238b7bec631c114e5a1a557ea55bd14.ctex"]
 
 [params]
 

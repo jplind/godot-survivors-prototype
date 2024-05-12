@@ -11,6 +11,7 @@ attack_object_scene = ExtResource("2_m5bs7")
 unique_name_in_owner = true
 
 [node name="LaunchTimer" type="Timer" parent="."]
+wait_time = 0.8
 autostart = true
 
 [connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]

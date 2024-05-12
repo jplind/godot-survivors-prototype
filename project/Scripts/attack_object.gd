@@ -6,7 +6,7 @@ var direction : Vector2
 
 func _ready():
 	#direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	direction = (get_global_mouse_position() - position).normalized()
+	direction = position.direction_to(get_global_mouse_position())
 	rotation = direction.angle() + PI * 0.5
 
 func _process(delta):

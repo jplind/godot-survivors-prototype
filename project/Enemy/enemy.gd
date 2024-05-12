@@ -3,34 +3,36 @@ class_name Enemy extends CharacterBody2D
 @export var enemy_data : EnemyData
 var health : int
 var speed : int
-var steering_weight : float = 0.8
 var player
-#var movement_delta
+var stunned : bool = false
+var movement_delta
 @onready var navigation_agent_2d = %NavigationAgent2D
+@onready var stun_timer = %StunTimer
 
 func _ready():
 	health = enemy_data.health
 	speed = enemy_data.speed
+	navigation_agent_2d.max_speed = speed
 
 func _physics_process(delta):
 	if position.distance_to(player.position) > 1000:
 		despawn()
+	if stunned:
+		return
 	navigation_agent_2d.target_position = player.position
-	#movement_delta = speed * delta
 	if navigation_agent_2d.is_navigation_finished():
 		return
-	#position = position.move_toward(navigation_agent_2d.get_next_path_position(), movement_delta)
-	velocity = position.direction_to(navigation_agent_2d.get_next_path_position()) * speed
-	move_and_slide()
-	if velocity.x <= 0:
+	movement_delta = speed * delta
+	navigation_agent_2d.velocity = position.direction_to(navigation_agent_2d.get_next_path_position()) * speed
+	if navigation_agent_2d.velocity.x < -2:
 		$Sprite2D.flip_h = false
-	else:
+	elif navigation_agent_2d.velocity.x > 2:
 		$Sprite2D.flip_h = true
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	#position = position.move_toward(position + safe_velocity, movement_delta)
-	velocity = safe_velocity
-	move_and_slide()
+	if stunned:
+		return
+	position = position.move_toward(position + safe_velocity, movement_delta)
 
 func despawn():
 	Events.enemy_despawned.emit()
@@ -42,3 +44,8 @@ func _on_hurt_box_area_entered(area):
 	if health <= 0:
 		Events.enemy_died.emit(self)
 		despawn()
+	stunned = true
+	stun_timer.start()
+
+func _on_stun_timer_timeout():
+	stunned = false

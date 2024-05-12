@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var experience : int = 0
 var level : int = 1
@@ -24,6 +24,7 @@ func level_up():
 	level += 1
 	experience -= experience_to_next_level
 	level_label.text = "LV: " + str(level)
+	Events.level_gained.emit()
 
 func on_battle_started():
 	reset_experience()
