@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_v03j1"]
 [ext_resource type="Texture2D" uid="uid://cgeclyo3ogfd6" path="res://Sprites/curse_skull.png" id="2_x8xua"]
-[ext_resource type="Shape2D" uid="uid://4mk7v3vybhkf" path="res://Collision Shapes/cs_skull.tres" id="3_yejy8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0c26j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqcdt"]
 radius = 20.0
@@ -23,7 +24,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_x8xua")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("3_yejy8")
+shape = SubResource("CircleShape2D_0c26j")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true

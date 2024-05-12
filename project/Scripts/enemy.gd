@@ -40,4 +40,5 @@ func _on_hurt_box_area_entered(area):
 	health -= 500
 	Events.enemy_damaged.emit(500, position)
 	if health <= 0:
+		Events.enemy_died.emit(self)
 		despawn()
