@@ -13,9 +13,4 @@ func generate_damage_number(damage : int, enemy_position : Vector2):
 	add_child(damage_number)
 	damage_number.set_damage_number(damage)
 	damage_number.position = enemy_position
-	#var tween = create_tween()
-	#tween.tween_property(label, "position:y", label.position.y - 40, 0.25)
-	#tween.play()
-	#await tween.finished
-	#
 

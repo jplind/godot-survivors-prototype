@@ -6,7 +6,8 @@ extends CharacterBody2D
 @onready var sprite = %Sprite2D
 var speed : float = 150
 var direction : Vector2 = Vector2.ZERO
-var health : int = 200
+var health_start : int = 200
+var health : int
 var dead = false
 
 func _ready():
@@ -48,7 +49,7 @@ func die():
 
 func on_battle_started():
 	hit_timer.start()
-	health = 100
+	health = 200
 	update_health_bar(health)
 	dead = false
 	self.modulate = Color.WHITE

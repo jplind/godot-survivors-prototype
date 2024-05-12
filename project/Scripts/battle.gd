@@ -12,6 +12,7 @@ func _ready():
 	Events.player_died.connect(on_player_died)
 	enemy_spawner.player = player
 	attack_launcher.player = player
+	Events.battle_started.emit()
 
 func on_player_died():
 	battle_timer_running = false
