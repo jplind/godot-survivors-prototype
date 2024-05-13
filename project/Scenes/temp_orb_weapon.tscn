@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://u30xn8gtf0u5"]
+
+[ext_resource type="Script" path="res://Scenes/temp_orb_weapon.gd" id="1_4umip"]
+[ext_resource type="Texture2D" uid="uid://botyapkkcxmps" path="res://Sprites/misc_orb.png" id="1_lyu4r"]
+[ext_resource type="Texture2D" uid="uid://dqoqxwp3l4ter" path="res://Sprites/misc_orb2.png" id="2_eu6u6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elssh"]
+radius = 11.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8wji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lyu4r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eu6u6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TempOrbWeapon" type="Node2D"]
+z_index = 1000
+script = ExtResource("1_4umip")
+
+[node name="MovingOrb" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="HitBox" type="Area2D" parent="MovingOrb"]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingOrb/HitBox"]
+shape = SubResource("CircleShape2D_elssh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MovingOrb"]
+texture_filter = 1
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_v8wji")
+autoplay = "default"
+frame_progress = 0.859746
+
+[node name="AccelerationTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="AccelerationTimer" to="." method="_on_acceleration_timer_timeout"]

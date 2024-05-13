@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_jced6")
 health = 200
-speed = 100
+speed = 105

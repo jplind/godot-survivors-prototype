@@ -13,3 +13,6 @@ texture = ExtResource("2_f5t54")
 
 [node name="CollisionShape2D" parent="." index="1"]
 disabled = true
+
+[node name="HitBox" parent="." index="3"]
+collision_mask = 0

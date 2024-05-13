@@ -53,7 +53,3 @@ func on_battle_started():
 	update_health_bar(health)
 	dead = false
 	self.modulate = Color.WHITE
-
-
-func _on_hurt_box_area_entered(area):
-	pass # Replace with function body.

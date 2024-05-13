@@ -1,22 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://1joo3v0hb4ew"]
+[gd_scene load_steps=5 format=3 uid="uid://1joo3v0hb4ew"]
 
 [ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_d0dpo"]
 [ext_resource type="Texture2D" uid="uid://bchuawtawigny" path="res://Sprites/apple.png" id="2_bdk58"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u7re6"]
-radius = 20.0
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2sgpr"]
+radius = 75.0
 
 [node name="Collectable" type="Node2D"]
 z_index = -100
 script = ExtResource("1_d0dpo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_bdk58")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Pickup" type="Area2D" parent="."]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
 shape = SubResource("CircleShape2D_u7re6")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="Pull" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pull"]
+shape = SubResource("CircleShape2D_2sgpr")
+
+[connection signal="area_entered" from="Pickup" to="." method="_on_pickup_area_entered"]
+[connection signal="area_entered" from="Pull" to="." method="_on_pull_area_entered"]

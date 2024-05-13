@@ -3,9 +3,10 @@ extends Node2D
 var damage: int = 500
 var speed : float = 600
 var direction : Vector2
+@onready var hit_box = %HitBox
 
 func _ready():
-	#direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	hit_box.owner = self
 	direction = position.direction_to(get_global_mouse_position())
 	rotation = direction.angle() + PI * 0.5
 

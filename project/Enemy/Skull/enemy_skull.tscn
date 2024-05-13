@@ -22,6 +22,9 @@ disabled = true
 radius = 15.0
 neighbor_distance = 50.0
 
+[node name="HitBox" parent="." index="3"]
+collision_mask = 0
+
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_lbvjh")
 

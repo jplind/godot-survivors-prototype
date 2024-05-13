@@ -2,7 +2,7 @@ extends Node
 
 var experience : int = 0
 var level : int = 1
-var experience_to_next_level : int = 100
+var experience_to_next_level : int = 200
 
 @onready var experience_bar = %ExperienceBar
 @onready var level_label = %LevelLabel
