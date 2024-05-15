@@ -8,6 +8,7 @@ var stunned : bool = false
 var movement_delta
 @onready var navigation_agent_2d = %NavigationAgent2D
 @onready var stun_timer = %StunTimer
+@onready var sprite = $Sprite2D
 
 func _ready():
 	health = enemy_data.health
@@ -47,6 +48,14 @@ func _on_hurt_box_area_entered(area):
 		despawn()
 	stunned = true
 	stun_timer.start()
+	hit_flash_effect()
 
 func _on_stun_timer_timeout():
 	stunned = false
+
+func hit_flash_effect():
+	sprite.material.set_shader_parameter("flash_opacity", 1.0)
+	var tween = create_tween()
+	tween.tween_property(sprite, "material:shader_parameter/flash_opacity", 0, 0.5)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.play()

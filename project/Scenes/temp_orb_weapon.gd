@@ -18,7 +18,6 @@ func _ready():
 	randomize_acceleration_wait_time()
 	acceleration_timer.start()
 	hit_box.owner = self
-	print(hit_box.owner)
 
 func _process(delta):
 	if not visible:
