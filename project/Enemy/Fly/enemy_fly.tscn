@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhgfr6o7ynxoo"]
+[gd_scene load_steps=6 format=3 uid="uid://bhgfr6o7ynxoo"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_88d4b"]
 [ext_resource type="Texture2D" uid="uid://cvvk0dpbstdkj" path="res://Enemy/Fly/giant_blowfly.png" id="2_f5t54"]
 [ext_resource type="Resource" uid="uid://orqljugfgjhs" path="res://Enemy/Fly/fly.tres" id="2_ff2p8"]
+[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="3_te8sr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6fi1d"]
+resource_local_to_scene = true
+shader = ExtResource("3_te8sr")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [node name="EnemyFly" instance=ExtResource("1_88d4b")]
 enemy_data = ExtResource("2_ff2p8")
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_6fi1d")
 position = Vector2(0, 0)
 texture = ExtResource("2_f5t54")
 

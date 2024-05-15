@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bly7yxln6q7rw"]
+
+[ext_resource type="PackedScene" uid="uid://1joo3v0hb4ew" path="res://Collectable/collectable.tscn" id="1_ndy2f"]
+[ext_resource type="Resource" uid="uid://r61v1bsr2hms" path="res://Collectable/Fruit/fruit.tres" id="2_dwkow"]
+
+[node name="CollectableHealth" instance=ExtResource("1_ndy2f")]
+collectable_data = ExtResource("2_dwkow")

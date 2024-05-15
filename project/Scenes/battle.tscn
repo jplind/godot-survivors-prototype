@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=21 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
@@ -13,10 +13,11 @@
 [ext_resource type="Script" path="res://Scripts/damag_number_generator.gd" id="8_j53hx"]
 [ext_resource type="PackedScene" uid="uid://b0rwu8wjsft0r" path="res://Scenes/damage_number.tscn" id="9_c4h2d"]
 [ext_resource type="Script" path="res://Scenes/level_up_card.gd" id="10_4lvul"]
-[ext_resource type="Script" path="res://Scripts/gem_spawner.gd" id="10_hl0bs"]
-[ext_resource type="PackedScene" uid="uid://1joo3v0hb4ew" path="res://Scenes/collectable.tscn" id="11_l174j"]
+[ext_resource type="Script" path="res://Scripts/collectable_spawner.gd" id="10_hl0bs"]
 [ext_resource type="Script" path="res://Scripts/experience_counter.gd" id="12_rw78r"]
+[ext_resource type="PackedScene" uid="uid://bne0tt77bveng" path="res://Collectable/Book/collectable_experience.tscn" id="15_15fmu"]
 [ext_resource type="Script" path="res://Scripts/level_up_manager.gd" id="15_e3rha"]
+[ext_resource type="PackedScene" uid="uid://bly7yxln6q7rw" path="res://Collectable/Fruit/collectable_health.tscn" id="16_7rrvr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs1f1"]
 resource_name = "base"
@@ -181,11 +182,11 @@ script = ExtResource("10_4lvul")
 script = ExtResource("8_j53hx")
 damage_number_scene = ExtResource("9_c4h2d")
 
-[node name="GemSpawner" type="Node2D" parent="."]
+[node name="CollectableSpawner" type="Node2D" parent="."]
 script = ExtResource("10_hl0bs")
-collectable_scene = ExtResource("11_l174j")
+collectable_scenes = Array[PackedScene]([ExtResource("15_15fmu"), ExtResource("16_7rrvr")])
 
-[node name="SpawnedGems" type="Node2D" parent="GemSpawner"]
+[node name="SpawnedCollectables" type="Node2D" parent="CollectableSpawner"]
 unique_name_in_owner = true
 
 [node name="ExperienceCounter" type="Node" parent="."]

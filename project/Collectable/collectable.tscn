@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://1joo3v0hb4ew"]
 
-[ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_d0dpo"]
-[ext_resource type="Texture2D" uid="uid://bchuawtawigny" path="res://Sprites/apple.png" id="2_bdk58"]
+[ext_resource type="Script" path="res://Collectable/collectable.gd" id="1_6w5ba"]
+[ext_resource type="Texture2D" uid="uid://bchuawtawigny" path="res://Collectable/Fruit/apple.png" id="2_me2lf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u7re6"]
-radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2sgpr"]
-radius = 75.0
+radius = 80.0
 
 [node name="Collectable" type="Node2D"]
 z_index = -100
-script = ExtResource("1_d0dpo")
+script = ExtResource("1_6w5ba")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
-texture = ExtResource("2_bdk58")
+texture = ExtResource("2_me2lf")
 
 [node name="Pickup" type="Area2D" parent="."]
 collision_layer = 8

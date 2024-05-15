@@ -8,11 +8,11 @@ var experience_to_next_level : int = 200
 @onready var level_label = %LevelLabel
 
 func _ready():
-	Events.gem_picked.connect(on_gem_picked)
+	Events.book_picked.connect(on_book_picked)
 	Events.battle_started.connect(on_battle_started)
 
-func on_gem_picked():
-	add_experience(10)
+func on_book_picked(value):
+	add_experience(value)
 
 func add_experience(value : int):
 	experience += value

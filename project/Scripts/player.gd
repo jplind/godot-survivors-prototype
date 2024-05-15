@@ -6,12 +6,15 @@ extends CharacterBody2D
 @onready var sprite = %Sprite2D
 var speed : float = 150
 var direction : Vector2 = Vector2.ZERO
-var health_start : int = 200
+const MAX_HEALTH : int = 200
 var health : int
 var dead = false
 
 func _ready():
 	Events.battle_started.connect(on_battle_started)
+	Events.fruit_picked.connect(on_fruit_picked)
+	health = MAX_HEALTH
+	update_health_bar()
 
 func get_input():
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -33,13 +36,13 @@ func _process(delta):
 func take_damage():
 	for enemy in hurt_box.get_overlapping_areas():
 		health = max(health - 10, 0)
-		update_health_bar(health)
+		update_health_bar()
 		if health <= 0:
 			die()
 	hit_timer.start()
 
-func update_health_bar(value):
-	health_bar.value = value
+func update_health_bar():
+	health_bar.value = health
 
 func die():
 	dead = true
@@ -49,7 +52,11 @@ func die():
 
 func on_battle_started():
 	hit_timer.start()
-	health = 200
-	update_health_bar(health)
+	health = MAX_HEALTH
+	update_health_bar()
 	dead = false
 	self.modulate = Color.WHITE
+
+func on_fruit_picked(value):
+	health = min(health + value, MAX_HEALTH)
+	update_health_bar()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CollectableData" load_steps=5 format=3 uid="uid://dldar2glbb5tx"]
+
+[ext_resource type="Script" path="res://Collectable/collectable_data.gd" id="1_4vxgb"]
+[ext_resource type="Texture2D" uid="uid://oyu1oi0jl4xw" path="res://Collectable/Book/leather.png" id="2_4d3x0"]
+[ext_resource type="Texture2D" uid="uid://clmnavnxy06da" path="res://Collectable/Book/dark_green.png" id="3_63uaq"]
+[ext_resource type="Texture2D" uid="uid://b3dl7ajnonpoi" path="res://Collectable/Book/purple.png" id="4_j8ba6"]
+
+[resource]
+script = ExtResource("1_4vxgb")
+type = "book"
+weights = Array[int]([0, 0, 0, 0, 0, 0, 1, 1, 1, 2])
+textures = Array[Texture]([ExtResource("2_4d3x0"), ExtResource("3_63uaq"), ExtResource("4_j8ba6")])
+values = Array[int]([10, 25, 50])
