@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
-[ext_resource type="PackedScene" uid="uid://8vwoyuirtr0i" path="res://Scenes/attack_launcher.tscn" id="2_q86cv"]
+[ext_resource type="PackedScene" uid="uid://8vwoyuirtr0i" path="res://Attack/attack_launcher.tscn" id="2_q86cv"]
 [ext_resource type="Script" path="res://Enemy/enemy_spawner.gd" id="3_vu7ch"]
 [ext_resource type="Texture2D" uid="uid://cgar40hoqirb3" path="res://Sprites/ground_05.png" id="4_85uua"]
 [ext_resource type="PackedScene" uid="uid://bvf5jwhieeswa" path="res://Enemy/Skull/enemy_skull.tscn" id="4_vx8dx"]
@@ -12,7 +12,7 @@
 [ext_resource type="Theme" uid="uid://cgcqsv5lajjoe" path="res://Themes/button_theme.tres" id="7_yqa01"]
 [ext_resource type="Script" path="res://Scripts/damag_number_generator.gd" id="8_j53hx"]
 [ext_resource type="PackedScene" uid="uid://b0rwu8wjsft0r" path="res://Scenes/damage_number.tscn" id="9_c4h2d"]
-[ext_resource type="Script" path="res://Scenes/level_up_card.gd" id="10_4lvul"]
+[ext_resource type="Script" path="res://Scripts/level_up_card.gd" id="10_4lvul"]
 [ext_resource type="Script" path="res://Scripts/collectable_spawner.gd" id="10_hl0bs"]
 [ext_resource type="Script" path="res://Scripts/experience_counter.gd" id="12_rw78r"]
 [ext_resource type="PackedScene" uid="uid://bne0tt77bveng" path="res://Collectable/Book/collectable_experience.tscn" id="15_15fmu"]

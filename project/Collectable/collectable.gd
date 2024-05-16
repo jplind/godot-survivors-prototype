@@ -10,8 +10,10 @@ var player
 var value : int
 var type
 @onready var sprite = %Sprite2D
+@onready var pickup = %Pickup
 
 func _ready():
+	pickup.owner = self
 	type = collectable_data.type
 	var rarity = collectable_data.weights.pick_random()
 	value = collectable_data.values[rarity]
@@ -24,10 +26,6 @@ func _on_pickup_area_entered(area):
 		"fruit":
 			Events.fruit_picked.emit(value)
 	queue_free()
-
-func _on_pull_area_entered(area):
-	pulled = true
-	player = area
 
 func _process(delta):
 	if not pulled:

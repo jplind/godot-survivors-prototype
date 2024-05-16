@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://u30xn8gtf0u5"]
 
-[ext_resource type="Script" path="res://Scenes/temp_orb_weapon.gd" id="1_4umip"]
-[ext_resource type="Texture2D" uid="uid://botyapkkcxmps" path="res://Sprites/misc_orb.png" id="1_lyu4r"]
-[ext_resource type="Texture2D" uid="uid://dqoqxwp3l4ter" path="res://Sprites/misc_orb2.png" id="2_eu6u6"]
+[ext_resource type="Script" path="res://Attack/temp_orb_weapon.gd" id="1_7yur2"]
+[ext_resource type="Texture2D" uid="uid://botyapkkcxmps" path="res://Attack/misc_orb.png" id="2_jmfr0"]
+[ext_resource type="Texture2D" uid="uid://dqoqxwp3l4ter" path="res://Attack/misc_orb2.png" id="3_t8w13"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elssh"]
 radius = 11.0
@@ -11,10 +11,10 @@ radius = 11.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_lyu4r")
+"texture": ExtResource("2_jmfr0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_eu6u6")
+"texture": ExtResource("3_t8w13")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +23,7 @@ animations = [{
 
 [node name="TempOrbWeapon" type="Node2D"]
 z_index = 1000
-script = ExtResource("1_4umip")
+script = ExtResource("1_7yur2")
 
 [node name="MovingOrb" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)

@@ -60,3 +60,7 @@ func on_battle_started():
 func on_fruit_picked(value):
 	health = min(health + value, MAX_HEALTH)
 	update_health_bar()
+
+func _on_collectable_pull_area_entered(area):
+	area.owner.pulled = true
+	area.owner.player = self

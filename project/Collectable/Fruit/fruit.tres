@@ -8,6 +8,6 @@
 [resource]
 script = ExtResource("1_ohkbg")
 type = "fruit"
-weights = Array[int]([0, 0, 0, 0, 0, 0, 1, 1, 1, 2])
+weights = Array[int]([2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 textures = Array[Texture]([ExtResource("2_mbome"), ExtResource("3_mb5ln"), ExtResource("4_okaik")])
-values = Array[int]([10, 25, 50])
+values = Array[int]([5, 20, 50])

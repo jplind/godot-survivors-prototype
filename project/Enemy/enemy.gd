@@ -49,6 +49,7 @@ func _on_hurt_box_area_entered(area):
 	stunned = true
 	stun_timer.start()
 	hit_flash_effect()
+	apply_knockback()
 
 func _on_stun_timer_timeout():
 	stunned = false
@@ -58,4 +59,10 @@ func hit_flash_effect():
 	var tween = create_tween()
 	tween.tween_property(sprite, "material:shader_parameter/flash_opacity", 0, 0.5)
 	tween.set_trans(Tween.TRANS_SINE)
+	tween.play()
+
+func apply_knockback():
+	var direction = -position.direction_to(player.position)
+	var tween = create_tween()
+	tween.tween_property(self, "position", position + direction * 30, 0.15)
 	tween.play()

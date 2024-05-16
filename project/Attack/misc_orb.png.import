@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqoqxwp3l4ter"
-path="res://.godot/imported/misc_orb2.png-49bcaf60ca5f5c0e26edd7e48ecab9f0.ctex"
+uid="uid://botyapkkcxmps"
+path="res://.godot/imported/misc_orb.png-cbf2d7f73bd0b03c94a7b4e9819a893b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/misc_orb2.png"
-dest_files=["res://.godot/imported/misc_orb2.png-49bcaf60ca5f5c0e26edd7e48ecab9f0.ctex"]
+source_file="res://Attack/misc_orb.png"
+dest_files=["res://.godot/imported/misc_orb.png-cbf2d7f73bd0b03c94a7b4e9819a893b.ctex"]
 
 [params]
 

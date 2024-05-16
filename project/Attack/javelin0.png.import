@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://botyapkkcxmps"
-path="res://.godot/imported/misc_orb.png-426ecbd1024840f1d0a8167fc088bbf4.ctex"
+uid="uid://02pe1ees1s2j"
+path="res://.godot/imported/javelin0.png-3f9dec14d475d817195188ed9ad87d65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/misc_orb.png"
-dest_files=["res://.godot/imported/misc_orb.png-426ecbd1024840f1d0a8167fc088bbf4.ctex"]
+source_file="res://Attack/javelin0.png"
+dest_files=["res://.godot/imported/javelin0.png-3f9dec14d475d817195188ed9ad87d65.ctex"]
 
 [params]
 

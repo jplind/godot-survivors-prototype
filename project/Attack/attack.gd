@@ -1,3 +1,4 @@
+class_name Attack
 extends Node2D
 
 var damage: int = 500

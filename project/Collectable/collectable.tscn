@@ -1,12 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1joo3v0hb4ew"]
+[gd_scene load_steps=4 format=3 uid="uid://1joo3v0hb4ew"]
 
 [ext_resource type="Script" path="res://Collectable/collectable.gd" id="1_6w5ba"]
 [ext_resource type="Texture2D" uid="uid://bchuawtawigny" path="res://Collectable/Fruit/apple.png" id="2_me2lf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u7re6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2sgpr"]
-radius = 80.0
 
 [node name="Collectable" type="Node2D"]
 z_index = -100
@@ -18,16 +15,10 @@ texture_filter = 1
 texture = ExtResource("2_me2lf")
 
 [node name="Pickup" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup"]
 shape = SubResource("CircleShape2D_u7re6")
 
-[node name="Pull" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pull"]
-shape = SubResource("CircleShape2D_2sgpr")
-
 [connection signal="area_entered" from="Pickup" to="." method="_on_pickup_area_entered"]
-[connection signal="area_entered" from="Pull" to="." method="_on_pull_area_entered"]
