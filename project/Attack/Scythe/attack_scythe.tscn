@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ny25gindkc24"]
+
+[ext_resource type="PackedScene" uid="uid://c7okn5ros3fk6" path="res://Attack/attack.tscn" id="1_p8bvc"]
+[ext_resource type="Script" path="res://Attack/move_circle.gd" id="2_fubed"]
+[ext_resource type="Texture2D" uid="uid://c5ujajly4gvmt" path="res://Attack/Scythe/scythe.png" id="2_tirse"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjfxs"]
+height = 55.3133
+
+[node name="AttackScythe" instance=ExtResource("1_p8bvc")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_tirse")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -17)
+rotation = -1.36412
+shape = SubResource("CapsuleShape2D_kjfxs")
+
+[node name="MoveBehavior" parent="." index="3"]
+script = ExtResource("2_fubed")

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_buoio")
-health = 500
+health = 50
 speed = 80

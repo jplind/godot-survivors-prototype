@@ -40,7 +40,7 @@ func despawn():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	var damage = area.owner.damage
+	var damage = randf_range(area.owner.damage.x, area.owner.damage.y)
 	health -= damage
 	Events.enemy_damaged.emit(damage, position)
 	if health <= 0:
@@ -64,5 +64,5 @@ func hit_flash_effect():
 func apply_knockback():
 	var direction = -position.direction_to(player.position)
 	var tween = create_tween()
-	tween.tween_property(self, "position", position + direction * 30, 0.15)
+	tween.tween_property(self, "position", position + direction * 35, 0.15)
 	tween.play()

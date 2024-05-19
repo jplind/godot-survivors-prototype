@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_xxegk")
-health = 1200
+health = 120
 speed = 45

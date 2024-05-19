@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=27 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
-[ext_resource type="PackedScene" uid="uid://8vwoyuirtr0i" path="res://Attack/attack_launcher.tscn" id="2_q86cv"]
 [ext_resource type="Script" path="res://Enemy/enemy_spawner.gd" id="3_vu7ch"]
 [ext_resource type="Texture2D" uid="uid://cgar40hoqirb3" path="res://Sprites/ground_05.png" id="4_85uua"]
 [ext_resource type="PackedScene" uid="uid://bvf5jwhieeswa" path="res://Enemy/Skull/enemy_skull.tscn" id="4_vx8dx"]
@@ -18,6 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://bne0tt77bveng" path="res://Collectable/Book/collectable_experience.tscn" id="15_15fmu"]
 [ext_resource type="Script" path="res://Scripts/level_up_manager.gd" id="15_e3rha"]
 [ext_resource type="PackedScene" uid="uid://bly7yxln6q7rw" path="res://Collectable/Fruit/collectable_health.tscn" id="16_7rrvr"]
+[ext_resource type="PackedScene" uid="uid://8vwoyuirtr0i" path="res://Attack/attack_launcher.tscn" id="18_apot2"]
+[ext_resource type="Resource" uid="uid://cxe31w0etwdiy" path="res://Attack/Javelin/javelin.tres" id="19_ruxb6"]
+[ext_resource type="PackedScene" uid="uid://qknw35a8kaqh" path="res://Attack/Javelin/attack_javelin.tscn" id="20_3yvrd"]
+[ext_resource type="Resource" uid="uid://py0pg7v43mt7" path="res://Attack/Needle/needle.tres" id="21_a0yoc"]
+[ext_resource type="PackedScene" uid="uid://b3jtnnkmvuesy" path="res://Attack/Needle/attack_needle.tscn" id="22_l2lv2"]
+[ext_resource type="Resource" uid="uid://bt01raby3ir4t" path="res://Attack/Scythe/scythe.tres" id="23_c4r2u"]
+[ext_resource type="PackedScene" uid="uid://ny25gindkc24" path="res://Attack/Scythe/attack_scythe.tscn" id="24_qnxs6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs1f1"]
 resource_name = "base"
@@ -32,8 +38,6 @@ sources/0 = SubResource("TileSetAtlasSource_vs1f1")
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_15oof")
 
-[node name="AttackLauncher" parent="." instance=ExtResource("2_q86cv")]
-
 [node name="EnemySpawner" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_vu7ch")
@@ -41,7 +45,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_vx8dx"), ExtResource("5_qdixe"
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
 unique_name_in_owner = true
-wait_time = 0.15
+wait_time = 0.1
 autostart = true
 
 [node name="Enemies" type="Node2D" parent="EnemySpawner"]
@@ -194,6 +198,21 @@ script = ExtResource("12_rw78r")
 
 [node name="LevelUpManager" type="Node" parent="."]
 script = ExtResource("15_e3rha")
+
+[node name="AttackLauncher" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_apot2")]
+attack_data = ExtResource("19_ruxb6")
+attack_scene = ExtResource("20_3yvrd")
+player = NodePath("../Player")
+
+[node name="AttackLauncher2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_apot2")]
+attack_data = ExtResource("21_a0yoc")
+attack_scene = ExtResource("22_l2lv2")
+player = NodePath("../Player")
+
+[node name="AttackLauncher3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_apot2")]
+attack_data = ExtResource("23_c4r2u")
+attack_scene = ExtResource("24_qnxs6")
+player = NodePath("../Player")
 
 [connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/GameoverMenu/RetryButton" to="." method="_on_restart_button_pressed"]

@@ -1,0 +1,2 @@
+class_name MoveBehavior
+extends Node2D

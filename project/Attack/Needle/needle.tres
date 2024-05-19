@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3 uid="uid://py0pg7v43mt7"]
+
+[ext_resource type="Script" path="res://Attack/attack_data.gd" id="1_0aiuq"]
+
+[resource]
+script = ExtResource("1_0aiuq")
+damage = Vector2(15, 30)
+lifetime = 10.0
+targeting_behavior = 2
+speed = 1000
+launch_rate = 2.0
+chain_attacks = 8
+chain_rate = 0.06
+chain_spread_range = Vector2(0, 20)
+pierce = 0

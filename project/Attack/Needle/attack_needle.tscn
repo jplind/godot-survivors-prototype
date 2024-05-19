@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3jtnnkmvuesy"]
+
+[ext_resource type="PackedScene" uid="uid://c7okn5ros3fk6" path="res://Attack/attack.tscn" id="1_uqjrl"]
+[ext_resource type="Texture2D" uid="uid://y26vwjkcjscu" path="res://Attack/Needle/needle.png" id="2_6gd7r"]
+[ext_resource type="Script" path="res://Attack/move_straight.gd" id="3_3mnxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fpkl"]
+size = Vector2(4, 24)
+
+[node name="AttackNeedle" instance=ExtResource("1_uqjrl")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6gd7r")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_2fpkl")
+
+[node name="MoveBehavior" parent="." index="3"]
+script = ExtResource("3_3mnxr")

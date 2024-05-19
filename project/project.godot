@@ -18,6 +18,7 @@ config/icon="res://Enemy/Skull/curse_skull.png"
 [autoload]
 
 Events="*res://Scripts/Events.gd"
+Enums="*res://enums.gd"
 
 [display]
 

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3 uid="uid://bt01raby3ir4t"]
+
+[ext_resource type="Script" path="res://Attack/attack_data.gd" id="1_g1hk0"]
+
+[resource]
+script = ExtResource("1_g1hk0")
+damage = Vector2(20, 40)
+lifetime = 4.0
+targeting_behavior = 0
+speed = 400
+launch_rate = 4.0
+chain_attacks = 2
+chain_rate = 0.01
+chain_spread_range = Vector2(0, 360)
+pierce = 1000

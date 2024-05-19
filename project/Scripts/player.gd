@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 
 @onready var hurt_box = %HurtBox
 @onready var health_bar = %HealthBar
@@ -22,7 +22,6 @@ func get_input():
 		sprite.flip_h = false
 	elif direction.x > 0:
 		sprite.flip_h = true
-	velocity = direction * speed
 
 func _process(delta):
 	if dead:
@@ -58,9 +57,13 @@ func on_battle_started():
 	self.modulate = Color.WHITE
 
 func on_fruit_picked(value):
+	if dead:
+		return
 	health = min(health + value, MAX_HEALTH)
 	update_health_bar()
 
 func _on_collectable_pull_area_entered(area):
+	if dead:
+		return
 	area.owner.pulled = true
 	area.owner.player = self

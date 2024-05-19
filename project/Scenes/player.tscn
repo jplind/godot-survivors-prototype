@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cke288rhj6ajb"]
+[gd_scene load_steps=6 format=3 uid="uid://cke288rhj6ajb"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ysopc"]
 [ext_resource type="Texture2D" uid="uid://dj5yvob2m28q8" path="res://Sprites/vampire.png" id="2_5kexh"]
-[ext_resource type="PackedScene" uid="uid://u30xn8gtf0u5" path="res://Attack/temp_orb_weapon.tscn" id="3_klbta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1g3n"]
 radius = 8.0
@@ -17,8 +16,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [sub_resource type="CircleShape2D" id="CircleShape2D_8d1ul"]
 radius = 90.0
 
-[node name="Player" type="CharacterBody2D"]
-collision_mask = 0
+[node name="Player" type="Node2D"]
 script = ExtResource("1_ysopc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -61,8 +59,6 @@ unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
 
-[node name="TempOrbWeapon" parent="." instance=ExtResource("3_klbta")]
-
 [node name="CollectablePull" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
@@ -70,5 +66,4 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectablePull"]
 shape = SubResource("CircleShape2D_8d1ul")
 
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="CollectablePull" to="." method="_on_collectable_pull_area_entered"]
