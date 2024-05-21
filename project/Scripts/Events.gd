@@ -8,4 +8,4 @@ signal enemy_died(enemy : Enemy)
 signal book_picked(value : int)
 signal fruit_picked(value : int)
 signal level_gained
-signal level_up_picked
+signal upgrade_picked

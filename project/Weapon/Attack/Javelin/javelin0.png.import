@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5ujajly4gvmt"
-path="res://.godot/imported/scythe.png-ebd2e5f2fdbbebf76d539e8303d5ca40.ctex"
+uid="uid://02pe1ees1s2j"
+path="res://.godot/imported/javelin0.png-e0673bdc8cf0f9435f5b9bfaf5be0227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Attack/Scythe/scythe.png"
-dest_files=["res://.godot/imported/scythe.png-ebd2e5f2fdbbebf76d539e8303d5ca40.ctex"]
+source_file="res://Weapon/Attack/Javelin/javelin0.png"
+dest_files=["res://.godot/imported/javelin0.png-e0673bdc8cf0f9435f5b9bfaf5be0227.ctex"]
 
 [params]
 

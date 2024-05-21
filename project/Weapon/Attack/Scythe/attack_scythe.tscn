@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ny25gindkc24"]
 
-[ext_resource type="PackedScene" uid="uid://c7okn5ros3fk6" path="res://Attack/attack.tscn" id="1_p8bvc"]
-[ext_resource type="Script" path="res://Attack/move_circle.gd" id="2_fubed"]
-[ext_resource type="Texture2D" uid="uid://c5ujajly4gvmt" path="res://Attack/Scythe/scythe.png" id="2_tirse"]
+[ext_resource type="PackedScene" uid="uid://c7okn5ros3fk6" path="res://Weapon/Attack/attack.tscn" id="1_p8bvc"]
+[ext_resource type="Script" path="res://Weapon/Attack/move_circle.gd" id="2_fubed"]
+[ext_resource type="Texture2D" uid="uid://c5ujajly4gvmt" path="res://Weapon/Attack/Scythe/scythe.png" id="2_tirse"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjfxs"]
 height = 55.3133

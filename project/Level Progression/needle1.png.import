@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://02pe1ees1s2j"
-path="res://.godot/imported/javelin0.png-d85aec9b68b25c7f175ef8da89da11b8.ctex"
+uid="uid://cl7wlcjfr2ogq"
+path="res://.godot/imported/needle1.png-7b6bbb9c031b283c145ddd121be232de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Attack/Javelin/javelin0.png"
-dest_files=["res://.godot/imported/javelin0.png-d85aec9b68b25c7f175ef8da89da11b8.ctex"]
+source_file="res://Level Progression/needle1.png"
+dest_files=["res://.godot/imported/needle1.png-7b6bbb9c031b283c145ddd121be232de.ctex"]
 
 [params]
 

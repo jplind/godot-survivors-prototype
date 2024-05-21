@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7okn5ros3fk6"]
 
-[ext_resource type="Script" path="res://Attack/attack.gd" id="1_8qgih"]
-[ext_resource type="Texture2D" uid="uid://02pe1ees1s2j" path="res://Attack/Javelin/javelin0.png" id="2_opq1o"]
-[ext_resource type="Script" path="res://Attack/move_behavior.gd" id="3_mugur"]
+[ext_resource type="Script" path="res://Weapon/Attack/attack.gd" id="1_8qgih"]
+[ext_resource type="Texture2D" uid="uid://02pe1ees1s2j" path="res://Weapon/Attack/Javelin/javelin0.png" id="2_opq1o"]
+[ext_resource type="Script" path="res://Weapon/Attack/move_behavior.gd" id="3_mugur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj8kv"]
 size = Vector2(4, 58)

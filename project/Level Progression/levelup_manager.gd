@@ -8,6 +8,6 @@ func _ready():
 func on_level_gained():
 	level_up_menu.show()
 	get_tree().paused = true
-	await Events.level_up_picked
+	await Events.upgrade_picked
 	level_up_menu.hide()
 	get_tree().paused = false
