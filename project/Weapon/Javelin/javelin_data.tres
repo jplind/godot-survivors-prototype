@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://w2mejrarfjfy"]
+
+[ext_resource type="Script" path="res://Weapon/weapon_data.gd" id="1_ilv4u"]
+[ext_resource type="Resource" uid="uid://c4dcnq2e3bv8h" path="res://Weapon/Javelin/javelin_damage.tres" id="2_pv66r"]
+[ext_resource type="Resource" uid="uid://b5rey3emiwj2h" path="res://Weapon/Javelin/javelin_pierce.tres" id="3_t4ovw"]
+
+[resource]
+script = ExtResource("1_ilv4u")
+name = ""
+attack_rate_levels = Array[float]([4.0, 4.8, 3.8, 3.0, 2.5, 2.0])
+attack_rate_level = 0
+weapon_damage = ExtResource("2_pv66r")
+weapon_pierce = ExtResource("3_t4ovw")
+attack_lifetime = 10.0
+attack_speed = 600
+chain_attacks = 0
+chain_rate = 0.0
+chain_spread_range = Vector2(0, 0)

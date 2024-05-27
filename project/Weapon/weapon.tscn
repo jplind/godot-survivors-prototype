@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://3xkfsclds6re"]
+
+[ext_resource type="Script" path="res://Weapon/weapon.gd" id="1_mdfjc"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_mdfjc")
+
+[node name="LaunchedAttacks" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.8
+autostart = true
+
+[node name="ChainTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ChainTimer" to="." method="_on_chain_timer_timeout"]

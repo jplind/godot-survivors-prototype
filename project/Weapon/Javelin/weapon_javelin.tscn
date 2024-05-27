@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://btwp0o1fgllae"]
+
+[ext_resource type="PackedScene" uid="uid://3xkfsclds6re" path="res://Weapon/weapon.tscn" id="1_816nq"]
+[ext_resource type="Script" path="res://Weapon/Javelin/weapon_javelin.gd" id="2_e131g"]
+[ext_resource type="Resource" uid="uid://w2mejrarfjfy" path="res://Weapon/Javelin/javelin_data.tres" id="3_17m1v"]
+[ext_resource type="PackedScene" uid="uid://qknw35a8kaqh" path="res://Weapon/Javelin/attack_javelin.tscn" id="4_ck4xy"]
+
+[node name="WeaponJavelin" instance=ExtResource("1_816nq")]
+script = ExtResource("2_e131g")
+weapon_data = ExtResource("3_17m1v")
+attack_scene = ExtResource("4_ck4xy")

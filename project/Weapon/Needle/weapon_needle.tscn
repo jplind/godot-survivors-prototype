@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw745sp6fja0e"]
+
+[ext_resource type="PackedScene" uid="uid://3xkfsclds6re" path="res://Weapon/weapon.tscn" id="1_gxcs2"]
+[ext_resource type="Resource" uid="uid://csow4c14kyi27" path="res://Weapon/Needle/needle_data.tres" id="2_alnu5"]
+[ext_resource type="Script" path="res://Weapon/Needle/weapon_needle.gd" id="2_knrmv"]
+[ext_resource type="PackedScene" uid="uid://b3jtnnkmvuesy" path="res://Weapon/Needle/attack_needle.tscn" id="3_ok4yn"]
+
+[node name="WeaponNeedle" instance=ExtResource("1_gxcs2")]
+script = ExtResource("2_knrmv")
+weapon_data = ExtResource("2_alnu5")
+attack_scene = ExtResource("3_ok4yn")

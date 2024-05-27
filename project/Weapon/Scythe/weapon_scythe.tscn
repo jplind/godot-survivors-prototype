@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://dniqa17jftyc5"]
+
+[ext_resource type="PackedScene" uid="uid://3xkfsclds6re" path="res://Weapon/weapon.tscn" id="1_cmeml"]
+[ext_resource type="Resource" uid="uid://c3gxhmjrg27gn" path="res://Weapon/Scythe/scythe_data.tres" id="2_qgarh"]
+[ext_resource type="Script" path="res://Weapon/Scythe/weapon_scythe.gd" id="2_wkfpx"]
+[ext_resource type="PackedScene" uid="uid://ny25gindkc24" path="res://Weapon/Scythe/attack_scythe.tscn" id="3_tdt0w"]
+
+[node name="WeaponScythe" instance=ExtResource("1_cmeml")]
+script = ExtResource("2_wkfpx")
+weapon_data = ExtResource("2_qgarh")
+attack_scene = ExtResource("3_tdt0w")
