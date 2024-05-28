@@ -25,7 +25,7 @@ func add_experience(value : int):
 func level_up():
 	level += 1
 	experience -= to_next_level
-	to_next_level = level * 100
+	to_next_level = level * 50
 	experience_bar.max_value = to_next_level
 	experience_bar.value = experience
 	level_label.text = "LV: " + str(level)

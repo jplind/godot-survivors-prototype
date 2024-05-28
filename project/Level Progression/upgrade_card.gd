@@ -1,6 +1,7 @@
+class_name UpgradeCard
 extends Button
 
-@export var attribute : WeaponAttribute
+@export var attribute : Attribute
 
 @onready var texture_rect = %TextureRect
 @onready var name_label = %NameLabel
@@ -16,6 +17,10 @@ func _on_pressed():
 	Events.upgrade_picked.emit()
 	attribute.level += 1
 	attribute.value = attribute.level_values[attribute.level]
+	print(attribute.level)
+	if attribute.level == 5:
+		Events.upgrade_maxed.emit(self)
+		return
 	update_label()
 
 func update_label():

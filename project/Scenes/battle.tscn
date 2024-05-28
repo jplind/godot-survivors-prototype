@@ -47,7 +47,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_vx8dx"), ExtResource("5_qdixe"
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.5
 autostart = true
 
 [node name="Enemies" type="Node2D" parent="EnemySpawner"]

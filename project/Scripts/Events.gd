@@ -9,3 +9,4 @@ signal book_picked(value : int)
 signal fruit_picked(value : int)
 signal level_gained
 signal upgrade_picked
+signal upgrade_maxed(upgrade_card : UpgradeCard)

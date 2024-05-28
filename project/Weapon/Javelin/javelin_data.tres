@@ -13,6 +13,3 @@ weapon_damage = ExtResource("2_pv66r")
 weapon_pierce = ExtResource("3_t4ovw")
 attack_lifetime = 10.0
 attack_speed = 600
-chain_attacks = 0
-chain_rate = 0.0
-chain_spread_range = Vector2(0, 0)

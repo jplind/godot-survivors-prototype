@@ -1,2 +1,2 @@
 class_name WeaponAttribute
-extends Resource
+extends Attribute
