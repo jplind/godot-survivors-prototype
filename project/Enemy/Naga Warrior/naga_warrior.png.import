@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvvk0dpbstdkj"
-path="res://.godot/imported/giant_blowfly.png-8238b7bec631c114e5a1a557ea55bd14.ctex"
+uid="uid://chqy7nw13at24"
+path="res://.godot/imported/naga_warrior.png-b3205ed716b9bb4bf8e2e39ce0cc3f89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Fly/giant_blowfly.png"
-dest_files=["res://.godot/imported/giant_blowfly.png-8238b7bec631c114e5a1a557ea55bd14.ctex"]
+source_file="res://Enemy/Naga Warrior/naga_warrior.png"
+dest_files=["res://.godot/imported/naga_warrior.png-b3205ed716b9bb4bf8e2e39ce0cc3f89.ctex"]
 
 [params]
 

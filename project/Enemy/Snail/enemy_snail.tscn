@@ -1,18 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf76r8lyy0bww"]
+[gd_scene load_steps=8 format=3 uid="uid://cf76r8lyy0bww"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_qgg08"]
-[ext_resource type="Resource" uid="uid://ckkvxloxq1len" path="res://Enemy/Snail/snail.tres" id="2_mkemy"]
+[ext_resource type="Resource" uid="uid://ckkvxloxq1len" path="res://Enemy/Snail/snail_data.tres" id="2_t6feo"]
 [ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="3_e4gux"]
-[ext_resource type="Texture2D" uid="uid://bnot4i2dh64gk" path="res://Enemy/Snail/giant_snail.png" id="3_mj6ac"]
+[ext_resource type="Texture2D" uid="uid://bnot4i2dh64gk" path="res://Enemy/Snail/snail.png" id="4_boo0q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnjh0"]
 resource_local_to_scene = true
 shader = ExtResource("3_e4gux")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_csy04"]
-radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6l5s"]
 radius = 25.0
@@ -21,23 +18,15 @@ radius = 25.0
 radius = 25.0
 
 [node name="EnemySnail" instance=ExtResource("1_qgg08")]
-enemy_data = ExtResource("2_mkemy")
+enemy_data = ExtResource("2_t6feo")
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_tnjh0")
-position = Vector2(0, 0)
-texture = ExtResource("3_mj6ac")
+texture = ExtResource("4_boo0q")
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_csy04")
-disabled = true
-
-[node name="NavigationAgent2D" parent="." index="2"]
+[node name="NavigationAgent2D" parent="." index="1"]
 radius = 25.0
 neighbor_distance = 50.0
-
-[node name="HitBox" parent="." index="3"]
-collision_mask = 0
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_k6l5s")
