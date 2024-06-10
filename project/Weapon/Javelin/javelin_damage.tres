@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="WeaponDamage" load_steps=3 format=3 uid="uid://c4dcnq2e3bv8h"]
+[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://bpnxljqo1n455"]
 
-[ext_resource type="Script" path="res://Weapon/weapon_damage.gd" id="1_tg8mx"]
+[ext_resource type="Script" path="res://Scripts/attribute.gd" id="1_l8cqk"]
 [ext_resource type="Texture2D" uid="uid://02pe1ees1s2j" path="res://Weapon/Javelin/javelin0.png" id="2_bacrb"]
 
 [resource]
-script = ExtResource("1_tg8mx")
+script = ExtResource("1_l8cqk")
 name = "Javelin Damage"
 texture = ExtResource("2_bacrb")
-value = 50
-level_values = Array[int]([50, 75, 110, 160, 240, 360])
-level = 0
+value = 0.0
+value_initial = 50.0
+value_scaling = 25.0

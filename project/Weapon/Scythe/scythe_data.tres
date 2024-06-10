@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://c3gxhmjrg27gn"]
 
 [ext_resource type="Script" path="res://Weapon/weapon_data.gd" id="1_fdtw4"]
-[ext_resource type="Resource" uid="uid://bkuau2i44ag5o" path="res://Weapon/Scythe/scythe_damage.tres" id="2_b8raf"]
-[ext_resource type="Resource" uid="uid://bqv1rcb2ap5ld" path="res://Weapon/Scythe/scythe_pierce.tres" id="3_ad14p"]
+[ext_resource type="Resource" uid="uid://ctu51fxo35fa0" path="res://Weapon/Scythe/scythe_damage.tres" id="2_b8raf"]
+[ext_resource type="Resource" uid="uid://dus24uvvut2lb" path="res://Weapon/Scythe/scythe_size.tres" id="3_vdt1g"]
 
 [resource]
 script = ExtResource("1_fdtw4")
-name = ""
 attack_rate_levels = Array[float]([3.5, 4.0, 3.2, 2.5, 2.0, 1.5])
 attack_rate_level = 0
-weapon_damage = ExtResource("2_b8raf")
-weapon_pierce = ExtResource("3_ad14p")
+is_piercing = true
 attack_lifetime = 4.0
 attack_speed = 400
+damage = ExtResource("2_b8raf")
+size = ExtResource("3_vdt1g")
