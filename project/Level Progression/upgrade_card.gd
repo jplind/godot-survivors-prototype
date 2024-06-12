@@ -25,10 +25,12 @@ func update_upgrade_value():
 	var mean : float = (value_max + value_min) * 0.5
 	var deviation : float = mean * 0.2
 	var upgrade_value_unclamped : float = randfn(mean, deviation)
+	if attribute.value is int:
+		upgrade_value_unclamped = max(int(round(upgrade_value_unclamped)), 1)
 	upgrade_value = clampf(upgrade_value_unclamped, value_min, value_max)
 
 func update_label():
-	if attribute.value < 10:
+	if attribute.value is float:
 		value_label.text = "%.2f > %.2f" % [attribute.value, attribute.value + upgrade_value]
 	else:
 		value_label.text = "%d > %d" % [attribute.value, attribute.value + upgrade_value]

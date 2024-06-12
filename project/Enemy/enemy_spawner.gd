@@ -6,7 +6,7 @@ var player_direction_weight = 2
 var enemy_count : int = 0
 var spawn_distance = 600
 const SPAWN_TIME_INITIAL : float = 1
-const SPAWN_TIME_SCALING : float = 0.9
+const SPAWN_TIME_SCALING : float = 0.85
 @onready var spawned_enemies = %SpawnedEnemies
 @onready var enemy_spawn_timer : Timer = %EnemySpawnTimer
 

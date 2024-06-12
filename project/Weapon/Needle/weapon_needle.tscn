@@ -9,3 +9,6 @@
 script = ExtResource("2_knrmv")
 weapon_data = ExtResource("2_alnu5")
 attack_scene = ExtResource("3_ok4yn")
+
+[node name="ChainTimer" parent="." index="2"]
+wait_time = 0.08

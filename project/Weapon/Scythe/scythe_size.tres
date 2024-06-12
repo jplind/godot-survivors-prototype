@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://dus24uvvut2lb"]
+[gd_resource type="Resource" script_class="WeaponSize" load_steps=3 format=3 uid="uid://bjqfqw027ai13"]
 
-[ext_resource type="Script" path="res://Scripts/attribute.gd" id="1_8ngmd"]
+[ext_resource type="Script" path="res://Weapon/weapon_size.gd" id="1_kve2k"]
 [ext_resource type="Texture2D" uid="uid://c5ujajly4gvmt" path="res://Weapon/Scythe/scythe.png" id="2_htavv"]
 
 [resource]
-script = ExtResource("1_8ngmd")
-name = "Scythe Size"
-texture = ExtResource("2_htavv")
+script = ExtResource("1_kve2k")
 value = 0.0
 value_initial = 1.0
-value_scaling = 0.2
+value_scaling = 0.12
+name = "Scythe Size"
+texture = ExtResource("2_htavv")

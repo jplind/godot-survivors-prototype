@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://w2mejrarfjfy"]
 
 [ext_resource type="Script" path="res://Weapon/weapon_data.gd" id="1_ilv4u"]
-[ext_resource type="Resource" uid="uid://bpnxljqo1n455" path="res://Weapon/Javelin/javelin_damage.tres" id="2_pv66r"]
-[ext_resource type="Resource" uid="uid://30oyxhic4l4v" path="res://Weapon/Javelin/javelin_size.tres" id="3_n1oqd"]
+[ext_resource type="Resource" uid="uid://dq0gowayhy02u" path="res://Weapon/Javelin/javelin_damage.tres" id="2_pv66r"]
+[ext_resource type="Resource" uid="uid://ssbcp4tj4fbu" path="res://Weapon/Javelin/javelin_size.tres" id="3_n1oqd"]
 
 [resource]
 script = ExtResource("1_ilv4u")
