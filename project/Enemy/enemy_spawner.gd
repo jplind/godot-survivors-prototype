@@ -1,7 +1,6 @@
 extends Node2D
 
 var viable_enemies : Array[Enemy]
-@export var enemy_scenes : Array[PackedScene]
 var player
 var player_direction_weight = 2
 var enemy_count : int = 0
@@ -22,7 +21,7 @@ func _on_enemy_spawn_timer_timeout():
 		return
 	if enemy_count > 500:
 		return
-	var enemy : Enemy = enemy_scenes.pick_random().instantiate()
+	var enemy : Enemy = viable_enemies.pick_random().duplicate()
 	enemy.player = player
 	spawned_enemies.add_child(enemy)
 	var random_direction : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()

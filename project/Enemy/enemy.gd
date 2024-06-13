@@ -14,7 +14,7 @@ func _ready():
 	health = enemy_data.health
 	speed = enemy_data.speed
 	navigation_agent_2d.max_speed = speed
-	#sprite.material = sprite.material.duplicate(true)
+	sprite.material = sprite.material.duplicate(true)
 
 func _physics_process(delta):
 	if position.distance_to(player.position) > 1000:
