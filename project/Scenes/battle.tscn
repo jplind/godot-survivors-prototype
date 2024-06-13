@@ -59,11 +59,11 @@ autostart = true
 
 [node name="EnemyProgression" type="Node" parent="."]
 script = ExtResource("3_vtkru")
-enemy_scenes = Array[PackedScene]([ExtResource("4_5vq8c"), ExtResource("5_aqnx7"), ExtResource("6_dcgny"), ExtResource("7_xj5rc"), ExtResource("8_6jgc7"), ExtResource("9_07p4k"), ExtResource("10_f6ff7"), ExtResource("4_vx8dx"), ExtResource("12_7bdsg"), ExtResource("5_qdixe"), ExtResource("14_yg6af"), ExtResource("15_knxyj"), ExtResource("16_cv5hm")])
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_vu7ch")
+all_enemy_scenes = Array[PackedScene]([ExtResource("12_7bdsg"), ExtResource("6_dcgny"), ExtResource("7_xj5rc"), ExtResource("4_vx8dx"), ExtResource("5_qdixe"), ExtResource("16_cv5hm"), ExtResource("9_07p4k"), ExtResource("15_knxyj"), ExtResource("10_f6ff7"), ExtResource("4_5vq8c"), ExtResource("8_6jgc7"), ExtResource("14_yg6af"), ExtResource("5_aqnx7")])
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
 unique_name_in_owner = true

@@ -1,6 +1,7 @@
 extends Node2D
 
-var viable_enemies : Array[Enemy]
+@export var all_enemy_scenes : Array[PackedScene]
+var viable_enemy_scenes : Array[PackedScene]
 var player
 var player_direction_weight = 2
 var enemy_count : int = 0
@@ -13,7 +14,6 @@ const SPAWN_TIME_SCALING : float = 0.85
 func _ready():
 	Events.enemy_despawned.connect(on_enemy_despawned)
 	Events.battle_started.connect(on_battle_started)
-	Events.viable_enemies_changed.connect(on_viable_enemies_changed)
 	Events.clock_minutes_changed.connect(on_clock_minutes_changed)
 
 func _on_enemy_spawn_timer_timeout():
@@ -21,7 +21,7 @@ func _on_enemy_spawn_timer_timeout():
 		return
 	if enemy_count > 500:
 		return
-	var enemy : Enemy = viable_enemies.pick_random().duplicate()
+	var enemy : Enemy = viable_enemy_scenes.pick_random().instantiate()
 	enemy.player = player
 	spawned_enemies.add_child(enemy)
 	var random_direction : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -31,11 +31,9 @@ func _on_enemy_spawn_timer_timeout():
 	enemy.position = player.position + random_direction * spawn_distance
 	enemy_count += 1
 
-func on_viable_enemies_changed(enemies : Array[Enemy]):
-	viable_enemies = enemies
-
 func on_clock_minutes_changed(minutes : int):
 	enemy_spawn_timer.wait_time *= SPAWN_TIME_SCALING
+	viable_enemy_scenes = all_enemy_scenes.slice(max(0, minutes - 1), minutes + 1)
 
 func on_enemy_despawned():
 	enemy_count -= 1
@@ -45,3 +43,4 @@ func on_battle_started():
 		enemy.queue_free()
 	enemy_count = 0
 	enemy_spawn_timer.wait_time = SPAWN_TIME_INITIAL
+	viable_enemy_scenes = all_enemy_scenes.slice(0, 1)

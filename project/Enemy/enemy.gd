@@ -14,7 +14,6 @@ func _ready():
 	health = enemy_data.health
 	speed = enemy_data.speed
 	navigation_agent_2d.max_speed = speed
-	sprite.material = sprite.material.duplicate(true)
 
 func _physics_process(delta):
 	if position.distance_to(player.position) > 1000:
@@ -41,7 +40,7 @@ func despawn():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	var damage : int = randfn(area.owner.damage, area.owner.damage * 0.08)
+	var damage : int = int(randfn(area.owner.damage, area.owner.damage * 0.08))
 	health -= damage
 	Events.enemy_damaged.emit(damage, position)
 	if health <= 0:
