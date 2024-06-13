@@ -9,6 +9,5 @@ extends Resource
 @export var attack_lifetime : float
 @export var attack_speed : int
 
-@export var damage : WeaponDamage
-@export var size : WeaponSize
-@export var quantity : WeaponQuantity
+@export var damage : Attribute
+@export var size : Attribute

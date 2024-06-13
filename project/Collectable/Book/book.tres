@@ -10,4 +10,4 @@ script = ExtResource("1_4vxgb")
 type = "book"
 weights = Array[int]([2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 textures = Array[Texture]([ExtResource("2_4d3x0"), ExtResource("3_63uaq"), ExtResource("4_j8ba6")])
-values = Array[int]([10, 30, 100])
+values = Array[int]([5, 20, 50])

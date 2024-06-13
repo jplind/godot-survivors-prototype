@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="WeaponDamage" load_steps=3 format=3 uid="uid://dx2ml3df5rdap"]
+[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://ctu51fxo35fa0"]
 
-[ext_resource type="Script" path="res://Weapon/weapon_damage.gd" id="1_x37ey"]
+[ext_resource type="Script" path="res://Scripts/attribute.gd" id="1_spxlc"]
 [ext_resource type="Texture2D" uid="uid://c5ujajly4gvmt" path="res://Weapon/Scythe/scythe.png" id="2_67qva"]
 
 [resource]
-script = ExtResource("1_x37ey")
-value = 0
-value_initial = 30
-value_scaling = 15
+script = ExtResource("1_spxlc")
 name = "Scythe Damage"
 texture = ExtResource("2_67qva")
+value = 0.0
+value_initial = 30.0
+value_scaling = 15.0
