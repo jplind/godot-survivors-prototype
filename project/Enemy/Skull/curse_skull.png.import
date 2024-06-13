@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ehum8m1uqfs"
-path="res://.godot/imported/wraith.png-f0021bdb55eff66d9667e24f15ceb248.ctex"
+uid="uid://cgeclyo3ogfd6"
+path="res://.godot/imported/curse_skull.png-6d98a965b43fa86233867386a225885a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Wraith/wraith.png"
-dest_files=["res://.godot/imported/wraith.png-f0021bdb55eff66d9667e24f15ceb248.ctex"]
+source_file="res://Enemy/Skull/curse_skull.png"
+dest_files=["res://.godot/imported/curse_skull.png-6d98a965b43fa86233867386a225885a.ctex"]
 
 [params]
 

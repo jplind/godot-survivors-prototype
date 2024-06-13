@@ -6,14 +6,14 @@ extends Node2D
 @onready var sprite = %Sprite2D
 var speed : float = 150
 var direction : Vector2 = Vector2.ZERO
-const HEALTH_MAX : int = 200
+const MAX_HEALTH : int = 200
 var health : int
 var dead = false
 
 func _ready():
 	Events.battle_started.connect(on_battle_started)
 	Events.fruit_picked.connect(on_fruit_picked)
-	health = HEALTH_MAX
+	health = MAX_HEALTH
 	update_health_bar()
 
 func get_input():
@@ -51,7 +51,7 @@ func die():
 
 func on_battle_started():
 	hit_timer.start()
-	health = HEALTH_MAX
+	health = MAX_HEALTH
 	update_health_bar()
 	dead = false
 	self.modulate = Color.WHITE
@@ -59,7 +59,7 @@ func on_battle_started():
 func on_fruit_picked(value):
 	if dead:
 		return
-	health = min(health + value, HEALTH_MAX)
+	health = min(health + value, MAX_HEALTH)
 	update_health_bar()
 
 func _on_collectable_pull_area_entered(area):

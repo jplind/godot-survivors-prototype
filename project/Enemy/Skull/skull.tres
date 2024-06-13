@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://ujoog3n8tkhp"]
+
+[ext_resource type="Script" path="res://Enemy/enemy_data.gd" id="1_buoio"]
+
+[resource]
+script = ExtResource("1_buoio")
+health = 50
+speed = 80
