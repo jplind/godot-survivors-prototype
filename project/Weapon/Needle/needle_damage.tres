@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="WeaponDamage" load_steps=3 format=3 uid="uid://byc6b1hdr6t8p"]
+[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://bdiyhekefpnrk"]
 
-[ext_resource type="Script" path="res://Weapon/weapon_damage.gd" id="1_gkipr"]
+[ext_resource type="Script" path="res://Scripts/attribute.gd" id="1_f3ypr"]
 [ext_resource type="Texture2D" uid="uid://y26vwjkcjscu" path="res://Weapon/Needle/needle.png" id="2_h5psd"]
 
 [resource]
-script = ExtResource("1_gkipr")
+script = ExtResource("1_f3ypr")
 name = "Needle Damage"
 texture = ExtResource("2_h5psd")
-value = 30
-level_values = Array[int]([30, 45, 70, 100, 150, 225])
-level = 0
+value = 0.0
+value_initial = 100.0
+value_scaling = 50.0

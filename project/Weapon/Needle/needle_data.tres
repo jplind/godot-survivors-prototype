@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://csow4c14kyi27"]
 
 [ext_resource type="Script" path="res://Weapon/weapon_data.gd" id="1_ldq2f"]
-[ext_resource type="Resource" uid="uid://byc6b1hdr6t8p" path="res://Weapon/Needle/needle_damage.tres" id="2_ol8tr"]
-[ext_resource type="Resource" uid="uid://dsgtjv7qnrw47" path="res://Weapon/Needle/needle_chain.tres" id="2_x7fil"]
+[ext_resource type="Resource" uid="uid://bdiyhekefpnrk" path="res://Weapon/Needle/needle_damage.tres" id="2_ol8tr"]
+[ext_resource type="Resource" uid="uid://by1lcd2r5ddyk" path="res://Weapon/Needle/needle_size.tres" id="3_4in17"]
 
 [resource]
 script = ExtResource("1_ldq2f")
-name = ""
 attack_rate_levels = Array[float]([2.0, 3.0, 2.4, 2.0, 1.5, 1.25])
 attack_rate_level = 0
-weapon_damage = ExtResource("2_ol8tr")
+is_piercing = false
 attack_lifetime = 10.0
 attack_speed = 900
-weapon_chain = ExtResource("2_x7fil")
+damage = ExtResource("2_ol8tr")
+size = ExtResource("3_4in17")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://by1lcd2r5ddyk"]
+
+[ext_resource type="Script" path="res://Scripts/attribute.gd" id="1_wxggs"]
+[ext_resource type="Texture2D" uid="uid://y26vwjkcjscu" path="res://Weapon/Needle/needle.png" id="2_hqgew"]
+
+[resource]
+script = ExtResource("1_wxggs")
+name = "Needle Size"
+texture = ExtResource("2_hqgew")
+value = 0.0
+value_initial = 1.0
+value_scaling = 0.2
