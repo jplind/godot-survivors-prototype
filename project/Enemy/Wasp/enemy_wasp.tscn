@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://1t2gwjn2k47u"]
+
+[ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_xhq1x"]
+[ext_resource type="Resource" uid="uid://dos6ugr2lidsj" path="res://Enemy/Wasp/wasp_data.tres" id="2_pske0"]
+[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="2_sxyjb"]
+[ext_resource type="Texture2D" uid="uid://cdtia8kutfaho" path="res://Enemy/Wasp/wasp.png" id="3_yf1b5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwghd"]
+resource_local_to_scene = true
+shader = ExtResource("2_sxyjb")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1x6e4"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p68nv"]
+radius = 15.0
+
+[node name="EnemyWasp" instance=ExtResource("1_xhq1x")]
+enemy_data = ExtResource("2_pske0")
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_jwghd")
+texture = ExtResource("3_yf1b5")
+offset = Vector2(0, -3)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_1x6e4")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_p68nv")

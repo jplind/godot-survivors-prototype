@@ -17,7 +17,6 @@ func _on_pressed():
 	Events.upgrade_picked.emit()
 	attribute.level += 1
 	attribute.value = attribute.level_values[attribute.level]
-	print(attribute.level)
 	if attribute.level == 5:
 		Events.upgrade_maxed.emit(self)
 		return

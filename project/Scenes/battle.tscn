@@ -1,28 +1,41 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=42 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
+[ext_resource type="Script" path="res://Scenes/game_clock.gd" id="2_nwhn7"]
+[ext_resource type="Script" path="res://Enemy/enemy_progression.gd" id="3_vtkru"]
 [ext_resource type="Script" path="res://Enemy/enemy_spawner.gd" id="3_vu7ch"]
+[ext_resource type="PackedScene" uid="uid://carc4ba1kmu8b" path="res://Enemy/Efreet/enemy_efreet.tscn" id="4_5vq8c"]
 [ext_resource type="Texture2D" uid="uid://cgar40hoqirb3" path="res://Sprites/ground_05.png" id="4_85uua"]
 [ext_resource type="PackedScene" uid="uid://bvf5jwhieeswa" path="res://Enemy/Skull/enemy_skull.tscn" id="4_vx8dx"]
+[ext_resource type="PackedScene" uid="uid://bapf6j7f0ldj4" path="res://Enemy/Eye/enemy_eye.tscn" id="5_aqnx7"]
 [ext_resource type="PackedScene" uid="uid://cf76r8lyy0bww" path="res://Enemy/Snail/enemy_snail.tscn" id="5_qdixe"]
 [ext_resource type="PackedScene" uid="uid://bhgfr6o7ynxoo" path="res://Enemy/Fly/enemy_fly.tscn" id="6_dcgny"]
 [ext_resource type="FontFile" uid="uid://dkgglilqpmisb" path="res://Fonts/Dark Crystal Outline.ttf" id="6_qo8fj"]
+[ext_resource type="PackedScene" uid="uid://t8x3q82pxo60" path="res://Enemy/Naga/enemy_naga.tscn" id="7_xj5rc"]
 [ext_resource type="Theme" uid="uid://cgcqsv5lajjoe" path="res://Themes/button_theme.tres" id="7_yqa01"]
+[ext_resource type="PackedScene" uid="uid://mpryk6v2j15h" path="res://Enemy/Naga Mage/enemy_naga_mage.tscn" id="8_6jgc7"]
 [ext_resource type="Script" path="res://Scripts/damag_number_generator.gd" id="8_j53hx"]
+[ext_resource type="PackedScene" uid="uid://gkkmjxj2whu" path="res://Enemy/Naga Warrior/enemy_naga_warrior.tscn" id="9_07p4k"]
 [ext_resource type="PackedScene" uid="uid://b0rwu8wjsft0r" path="res://Scenes/damage_number.tscn" id="9_c4h2d"]
+[ext_resource type="PackedScene" uid="uid://bkd85b6a8acg1" path="res://Enemy/Shade/enemy_shade.tscn" id="10_f6ff7"]
 [ext_resource type="Script" path="res://Scripts/collectable_spawner.gd" id="10_hl0bs"]
 [ext_resource type="PackedScene" uid="uid://y367tfhui5xy" path="res://Level Progression/upgrade_card.tscn" id="10_t2pd2"]
 [ext_resource type="Resource" uid="uid://c4dcnq2e3bv8h" path="res://Weapon/Javelin/javelin_damage.tres" id="11_61mv1"]
+[ext_resource type="PackedScene" uid="uid://bhhi2d77n1n0q" path="res://Enemy/Slug/enemy_slug.tscn" id="12_7bdsg"]
 [ext_resource type="Resource" uid="uid://byc6b1hdr6t8p" path="res://Weapon/Needle/needle_damage.tres" id="12_rbpvi"]
 [ext_resource type="Script" path="res://Level Progression/experience_counter.gd" id="12_rw78r"]
 [ext_resource type="Resource" uid="uid://bkuau2i44ag5o" path="res://Weapon/Scythe/scythe_damage.tres" id="13_24unn"]
 [ext_resource type="Resource" uid="uid://b5rey3emiwj2h" path="res://Weapon/Javelin/javelin_pierce.tres" id="14_i6bus"]
+[ext_resource type="PackedScene" uid="uid://bveiun6rdjg3p" path="res://Enemy/Spectre/enemy_spectre.tscn" id="14_yg6af"]
 [ext_resource type="PackedScene" uid="uid://bne0tt77bveng" path="res://Collectable/Book/collectable_experience.tscn" id="15_15fmu"]
 [ext_resource type="Resource" uid="uid://bqv1rcb2ap5ld" path="res://Weapon/Scythe/scythe_pierce.tres" id="15_16wql"]
 [ext_resource type="Script" path="res://Level Progression/levelup_manager.gd" id="15_e3rha"]
+[ext_resource type="Script" path="res://game_clock_ui.gd" id="15_gmp61"]
+[ext_resource type="PackedScene" uid="uid://1t2gwjn2k47u" path="res://Enemy/Wasp/enemy_wasp.tscn" id="15_knxyj"]
 [ext_resource type="PackedScene" uid="uid://bly7yxln6q7rw" path="res://Collectable/Fruit/collectable_health.tscn" id="16_7rrvr"]
 [ext_resource type="Resource" uid="uid://dsgtjv7qnrw47" path="res://Weapon/Needle/needle_chain.tres" id="16_bn0bs"]
+[ext_resource type="PackedScene" uid="uid://58jukbooycaa" path="res://Enemy/Wraith/enemy_wraith.tscn" id="16_cv5hm"]
 [ext_resource type="PackedScene" uid="uid://btwp0o1fgllae" path="res://Weapon/Javelin/weapon_javelin.tscn" id="21_ef8p5"]
 [ext_resource type="PackedScene" uid="uid://dw745sp6fja0e" path="res://Weapon/Needle/weapon_needle.tscn" id="22_8qau6"]
 [ext_resource type="PackedScene" uid="uid://dniqa17jftyc5" path="res://Weapon/Scythe/weapon_scythe.tscn" id="23_kudax"]
@@ -40,17 +53,27 @@ sources/0 = SubResource("TileSetAtlasSource_vs1f1")
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_15oof")
 
+[node name="GameClock" type="Node" parent="."]
+script = ExtResource("2_nwhn7")
+
+[node name="SecondsTimer" type="Timer" parent="GameClock"]
+unique_name_in_owner = true
+autostart = true
+
+[node name="EnemyProgression" type="Node" parent="."]
+script = ExtResource("3_vtkru")
+enemy_scenes = Array[PackedScene]([ExtResource("4_5vq8c"), ExtResource("5_aqnx7"), ExtResource("6_dcgny"), ExtResource("7_xj5rc"), ExtResource("8_6jgc7"), ExtResource("9_07p4k"), ExtResource("10_f6ff7"), ExtResource("4_vx8dx"), ExtResource("12_7bdsg"), ExtResource("5_qdixe"), ExtResource("14_yg6af"), ExtResource("15_knxyj"), ExtResource("16_cv5hm")])
+
 [node name="EnemySpawner" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_vu7ch")
-enemy_scenes = Array[PackedScene]([ExtResource("4_vx8dx"), ExtResource("5_qdixe"), ExtResource("6_dcgny")])
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
 unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
 
-[node name="Enemies" type="Node2D" parent="EnemySpawner"]
+[node name="SpawnedEnemies" type="Node2D" parent="EnemySpawner"]
 unique_name_in_owner = true
 y_sort_enabled = true
 
@@ -94,11 +117,28 @@ max_value = 200.0
 step = 1.0
 show_percentage = false
 
-[node name="BattleDurationLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="GameClockUI" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("15_gmp61")
+
+[node name="MinutesLabel" type="Label" parent="CanvasLayer/VBoxContainer/GameClockUI"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "0"
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColonLabel" type="Label" parent="CanvasLayer/VBoxContainer/GameClockUI"]
+layout_mode = 2
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondsLabel" type="Label" parent="CanvasLayer/VBoxContainer/GameClockUI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -216,5 +256,6 @@ player = NodePath("../Player")
 [node name="WeaponScythe" parent="." node_paths=PackedStringArray("player") instance=ExtResource("23_kudax")]
 player = NodePath("../Player")
 
+[connection signal="timeout" from="GameClock/SecondsTimer" to="GameClock" method="_on_second_timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/GameoverMenu/RetryButton" to="." method="_on_restart_button_pressed"]
