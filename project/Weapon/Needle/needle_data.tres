@@ -1,15 +1,23 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://csow4c14kyi27"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=7 format=3 uid="uid://csow4c14kyi27"]
 
 [ext_resource type="Script" path="res://Weapon/weapon_data.gd" id="1_ldq2f"]
-[ext_resource type="Resource" uid="uid://bdiyhekefpnrk" path="res://Weapon/Needle/needle_damage.tres" id="2_ol8tr"]
-[ext_resource type="Resource" uid="uid://by1lcd2r5ddyk" path="res://Weapon/Needle/needle_size.tres" id="3_4in17"]
+[ext_resource type="Resource" uid="uid://bvmwblfpslxr0" path="res://Weapon/Needle/needle_quantity.tres" id="2_4itfa"]
+[ext_resource type="Resource" uid="uid://cdnad646wyr24" path="res://Weapon/Needle/needle_damage.tres" id="2_ol8tr"]
+[ext_resource type="Script" path="res://Scripts/attribute.gd" id="3_kggjl"]
+[ext_resource type="Texture2D" uid="uid://y26vwjkcjscu" path="res://Weapon/Needle/needle.png" id="4_n2wd7"]
+
+[sub_resource type="Resource" id="Resource_pjqrm"]
+script = ExtResource("3_kggjl")
+name = "Needle Size"
+texture = ExtResource("4_n2wd7")
 
 [resource]
 script = ExtResource("1_ldq2f")
-attack_rate_levels = Array[float]([2.0, 3.0, 2.4, 2.0, 1.5, 1.25])
+attack_rate_levels = Array[float]([3.0, 3.0, 2.4, 2.0, 1.5, 1.25])
 attack_rate_level = 0
 is_piercing = false
 attack_lifetime = 10.0
 attack_speed = 900
 damage = ExtResource("2_ol8tr")
-size = ExtResource("3_4in17")
+size = SubResource("Resource_pjqrm")
+quantity = ExtResource("2_4itfa")

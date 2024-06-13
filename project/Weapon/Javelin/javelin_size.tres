@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://30oyxhic4l4v"]
+[gd_resource type="Resource" script_class="WeaponSize" load_steps=2 format=3 uid="uid://ssbcp4tj4fbu"]
 
-[ext_resource type="Script" path="res://Scripts/attribute.gd" id="1_8h0bv"]
-[ext_resource type="Texture2D" uid="uid://02pe1ees1s2j" path="res://Weapon/Javelin/javelin0.png" id="2_crtwy"]
+[ext_resource type="Script" path="res://Weapon/weapon_size.gd" id="1_brljw"]
 
 [resource]
-script = ExtResource("1_8h0bv")
-name = "Javelin Size"
-texture = ExtResource("2_crtwy")
+script = ExtResource("1_brljw")
 value = 0.0
 value_initial = 1.0
-value_scaling = 0.2
+value_scaling = 0.5
+name = ""

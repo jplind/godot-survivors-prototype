@@ -6,7 +6,6 @@ var viable_upgrades : Array[Node]
 
 func _ready():
 	Events.level_gained.connect(on_level_gained)
-	Events.upgrade_maxed.connect(on_upgrade_maxed)
 	Events.battle_started.connect(on_battle_started)
 
 func on_level_gained():
@@ -20,9 +19,6 @@ func on_level_gained():
 	for card in viable_upgrades:
 		card.hide()
 	level_up_menu.hide()
-
-func on_upgrade_maxed(upgrade_card : UpgradeCard):
-	viable_upgrades.erase(upgrade_card)
 
 func on_battle_started():
 	reset_viable_upgrades()

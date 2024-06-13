@@ -8,11 +8,9 @@ func _ready():
 	Events.battle_started.connect(on_battle_started)
 
 func on_enemy_died(enemy : Enemy):
-	var collectable
-	if randf() < 0.8:
-		collectable = collectable_scenes[0].instantiate()
-	else:
-		collectable = collectable_scenes[1].instantiate()
+	if randf() < 0.25:
+		return
+	var collectable = collectable_scenes[0].instantiate()
 	spawned_collectables.call_deferred("add_child", collectable)
 	collectable.position = enemy.position
 

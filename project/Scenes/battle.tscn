@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=39 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_15oof"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Scenes/player.tscn" id="1_o0y0b"]
@@ -21,11 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://bkd85b6a8acg1" path="res://Enemy/Shade/enemy_shade.tscn" id="10_f6ff7"]
 [ext_resource type="Script" path="res://Scripts/collectable_spawner.gd" id="10_hl0bs"]
 [ext_resource type="PackedScene" uid="uid://y367tfhui5xy" path="res://Level Progression/upgrade_card.tscn" id="10_t2pd2"]
-[ext_resource type="Resource" uid="uid://bpnxljqo1n455" path="res://Weapon/Javelin/javelin_damage.tres" id="11_61mv1"]
 [ext_resource type="PackedScene" uid="uid://bhhi2d77n1n0q" path="res://Enemy/Slug/enemy_slug.tscn" id="12_7bdsg"]
-[ext_resource type="Resource" uid="uid://bdiyhekefpnrk" path="res://Weapon/Needle/needle_damage.tres" id="12_rbpvi"]
+[ext_resource type="Resource" uid="uid://cdnad646wyr24" path="res://Weapon/Needle/needle_damage.tres" id="12_rbpvi"]
 [ext_resource type="Script" path="res://Level Progression/experience_counter.gd" id="12_rw78r"]
-[ext_resource type="Resource" uid="uid://ctu51fxo35fa0" path="res://Weapon/Scythe/scythe_damage.tres" id="13_24unn"]
+[ext_resource type="Resource" uid="uid://dx2ml3df5rdap" path="res://Weapon/Scythe/scythe_damage.tres" id="13_24unn"]
 [ext_resource type="PackedScene" uid="uid://bveiun6rdjg3p" path="res://Enemy/Spectre/enemy_spectre.tscn" id="14_yg6af"]
 [ext_resource type="PackedScene" uid="uid://bne0tt77bveng" path="res://Collectable/Book/collectable_experience.tscn" id="15_15fmu"]
 [ext_resource type="Script" path="res://Level Progression/levelup_manager.gd" id="15_e3rha"]
@@ -33,12 +32,10 @@
 [ext_resource type="PackedScene" uid="uid://1t2gwjn2k47u" path="res://Enemy/Wasp/enemy_wasp.tscn" id="15_knxyj"]
 [ext_resource type="PackedScene" uid="uid://bly7yxln6q7rw" path="res://Collectable/Fruit/collectable_health.tscn" id="16_7rrvr"]
 [ext_resource type="PackedScene" uid="uid://58jukbooycaa" path="res://Enemy/Wraith/enemy_wraith.tscn" id="16_cv5hm"]
-[ext_resource type="PackedScene" uid="uid://btwp0o1fgllae" path="res://Weapon/Javelin/weapon_javelin.tscn" id="21_ef8p5"]
 [ext_resource type="PackedScene" uid="uid://dw745sp6fja0e" path="res://Weapon/Needle/weapon_needle.tscn" id="22_8qau6"]
 [ext_resource type="PackedScene" uid="uid://dniqa17jftyc5" path="res://Weapon/Scythe/weapon_scythe.tscn" id="23_kudax"]
-[ext_resource type="Resource" uid="uid://30oyxhic4l4v" path="res://Weapon/Javelin/javelin_size.tres" id="27_tgv5m"]
-[ext_resource type="Resource" uid="uid://by1lcd2r5ddyk" path="res://Weapon/Needle/needle_size.tres" id="28_oph8w"]
-[ext_resource type="Resource" uid="uid://dus24uvvut2lb" path="res://Weapon/Scythe/scythe_size.tres" id="29_11rkc"]
+[ext_resource type="Resource" uid="uid://bvmwblfpslxr0" path="res://Weapon/Needle/needle_quantity.tres" id="27_wec5x"]
+[ext_resource type="Resource" uid="uid://bjqfqw027ai13" path="res://Weapon/Scythe/scythe_size.tres" id="29_11rkc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs1f1"]
 resource_name = "base"
@@ -200,11 +197,6 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 20
 
-[node name="UpgradeCard" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
-visible = false
-layout_mode = 2
-attribute = ExtResource("11_61mv1")
-
 [node name="UpgradeCard2" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
@@ -218,17 +210,12 @@ attribute = ExtResource("13_24unn")
 [node name="UpgradeCard4" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
-attribute = ExtResource("27_tgv5m")
+attribute = ExtResource("29_11rkc")
 
 [node name="UpgradeCard5" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
-attribute = ExtResource("28_oph8w")
-
-[node name="UpgradeCard6" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
-visible = false
-layout_mode = 2
-attribute = ExtResource("29_11rkc")
+attribute = ExtResource("27_wec5x")
 
 [node name="DamageNumberGenerator" type="Node2D" parent="."]
 script = ExtResource("8_j53hx")
@@ -246,9 +233,6 @@ script = ExtResource("12_rw78r")
 
 [node name="LevelupManager" type="Node" parent="."]
 script = ExtResource("15_e3rha")
-
-[node name="WeaponJavelin" parent="." node_paths=PackedStringArray("player") instance=ExtResource("21_ef8p5")]
-player = NodePath("../Player")
 
 [node name="WeaponNeedle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_8qau6")]
 player = NodePath("../Player")

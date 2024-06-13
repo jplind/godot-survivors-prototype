@@ -15,7 +15,8 @@ func _ready():
 	rotation = direction.angle() + PI * 0.5
 	damage = weapon_data.damage.value
 	speed = weapon_data.attack_speed
-	scale *= weapon_data.size.value
+	if weapon_data.size:
+		scale *= weapon_data.size.value
 	lifetime = weapon_data.attack_lifetime
 	lifetime_timer.wait_time = lifetime
 	lifetime_timer.start()

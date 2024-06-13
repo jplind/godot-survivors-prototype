@@ -40,7 +40,7 @@ func on_battle_started():
 func _on_chain_timer_timeout():
 	launch_chain_attack()
 	chain_count += 1
-	if chain_count < weapon_data.weapon_chain.value:
+	if chain_count < weapon_data.quantity.value:
 		chain_timer.start()
 
 func launch_chain_attack():
