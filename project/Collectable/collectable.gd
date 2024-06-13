@@ -3,9 +3,9 @@ extends Node2D
 
 @export var collectable_data : CollectableData
 var pulled : bool = false
-var acceleration : float = 250
+var acceleration : float = 200
 var speed : float = 0
-const MAX_SPEED : float = 700
+const MAX_SPEED : float = 600
 var player
 var value : int
 var type

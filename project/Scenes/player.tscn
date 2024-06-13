@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1g3n"]
 radius = 8.0
-height = 48.0
+height = 45.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6k5r5"]
 vertices = PackedVector2Array(950, 630, -950, 630, -950, -630, 950, -630)

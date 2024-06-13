@@ -41,7 +41,7 @@ func despawn():
 	queue_free()
 
 func _on_hurt_box_area_entered(area):
-	var damage : int = randfn(area.owner.damage, area.owner.damage * 0.08)
+	var damage = area.owner.damage
 	health -= damage
 	Events.enemy_damaged.emit(damage, position)
 	if health <= 0:

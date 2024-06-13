@@ -6,6 +6,8 @@ extends Node2D
 var damage : int
 var speed : int
 var lifetime : float
+var pierce : int
+var pierce_count : int = 0
 var direction : Vector2
 @onready var hit_box = %HitBox
 @onready var lifetime_timer = %LifetimeTimer
@@ -13,9 +15,8 @@ var direction : Vector2
 func _ready():
 	hit_box.owner = self
 	rotation = direction.angle() + PI * 0.5
-	damage = weapon_data.damage.value
+	damage = weapon_data.weapon_damage.value
 	speed = weapon_data.attack_speed
-	scale *= weapon_data.size.value
 	lifetime = weapon_data.attack_lifetime
 	lifetime_timer.wait_time = lifetime
 	lifetime_timer.start()
@@ -30,6 +31,8 @@ func _on_lifetime_timer_timeout():
 	queue_free()
 
 func _on_hit_box_area_entered(area):
-	if weapon_data.is_piercing:
-		return
+	if weapon_data.weapon_pierce:
+		pierce_count += 1
+		if pierce_count <= weapon_data.weapon_pierce.value:
+			return
 	queue_free()

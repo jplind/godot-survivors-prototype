@@ -15,16 +15,16 @@ func _ready():
 	Events.player_died.connect(on_player_died)
 	Events.battle_started.connect(on_battle_started)
 	attack_rate = weapon_data.attack_rate_levels[weapon_data.attack_rate_level]
+	if weapon_data.weapon_chain:
+		chain_spread = weapon_data.weapon_chain.chain_spread
+		chain_timer.wait_time = weapon_data.weapon_chain.chain_rate
 	attack_timer.wait_time = attack_rate
-	#if weapon_data.weapon_chain:
-		#chain_spread = weapon_data.weapon_chain.chain_spread
-		#chain_timer.wait_time = weapon_data.weapon_chain.chain_rate
 
 func _on_attack_timer_timeout():
 	launch_attack()
-	#if weapon_data.weapon_chain:
-		#chain_timer.start()
-		#chain_count = 0
+	if weapon_data.weapon_chain:
+		chain_timer.start()
+		chain_count = 0
 
 func launch_attack():
 	pass
