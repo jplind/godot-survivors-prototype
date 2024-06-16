@@ -14,6 +14,7 @@ func _ready():
 	Events.battle_started.connect(on_battle_started)
 	Events.fruit_picked.connect(on_fruit_picked)
 	health = HEALTH_MAX
+	health_bar.max_value = HEALTH_MAX
 	update_health_bar()
 
 func get_input():
