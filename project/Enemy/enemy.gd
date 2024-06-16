@@ -16,9 +16,6 @@ func _ready():
 	health = enemy_data.health
 	speed = enemy_data.speed
 	navigation_agent_2d.max_speed = speed
-	var noise_texture = NoiseTexture2D.new()
-	noise_texture.noise = FastNoiseLite.new()
-	sprite.material.set_shader_parameter("noise", noise_texture)
 
 func _physics_process(delta):
 	if is_stunned or is_despawning:

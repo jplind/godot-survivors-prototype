@@ -1,14 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvf5jwhieeswa"]
+[gd_scene load_steps=5 format=3 uid="uid://bvf5jwhieeswa"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_fvd7b"]
 [ext_resource type="Resource" uid="uid://ujoog3n8tkhp" path="res://Enemy/Skull/skull_data.tres" id="2_o3oce"]
-[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="3_mlpir"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ousjl"]
-resource_local_to_scene = true
-shader = ExtResource("3_mlpir")
-shader_parameter/flash_opacity = 0.0
-shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbvjh"]
 radius = 20.0
@@ -20,7 +13,6 @@ radius = 20.0
 enemy_data = ExtResource("2_o3oce")
 
 [node name="Sprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_ousjl")
 offset = Vector2(0, 4)
 
 [node name="NavigationAgent2D" parent="." index="1"]

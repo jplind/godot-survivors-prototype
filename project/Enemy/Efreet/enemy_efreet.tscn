@@ -1,15 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://carc4ba1kmu8b"]
+[gd_scene load_steps=6 format=3 uid="uid://carc4ba1kmu8b"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_u7seh"]
 [ext_resource type="Resource" uid="uid://c80p5kxf47efr" path="res://Enemy/Efreet/efreet_data.tres" id="2_17nj2"]
-[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="2_fxf7r"]
 [ext_resource type="Texture2D" uid="uid://dfo5ml17fqw8u" path="res://Enemy/Efreet/efreet.png" id="3_4a2qc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_afkqr"]
-resource_local_to_scene = true
-shader = ExtResource("2_fxf7r")
-shader_parameter/flash_opacity = 0.0
-shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3d0io"]
 height = 40.0
@@ -22,7 +15,6 @@ scale = Vector2(1.5, 1.5)
 enemy_data = ExtResource("2_17nj2")
 
 [node name="Sprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_afkqr")
 texture = ExtResource("3_4a2qc")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]

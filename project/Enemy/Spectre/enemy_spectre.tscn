@@ -1,15 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bveiun6rdjg3p"]
+[gd_scene load_steps=6 format=3 uid="uid://bveiun6rdjg3p"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_iuf8d"]
 [ext_resource type="Resource" uid="uid://dut1u5jdbdjp8" path="res://Enemy/Spectre/spectre_data.tres" id="2_peb2h"]
-[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="3_nqloq"]
 [ext_resource type="Texture2D" uid="uid://1ehtul3hj370" path="res://Enemy/Spectre/spectre.png" id="4_ifvi5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkfm1"]
-resource_local_to_scene = true
-shader = ExtResource("3_nqloq")
-shader_parameter/flash_opacity = 0.0
-shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_npsrh"]
 radius = 17.0
@@ -21,7 +14,6 @@ radius = 17.0
 enemy_data = ExtResource("2_peb2h")
 
 [node name="Sprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_xkfm1")
 texture = ExtResource("4_ifvi5")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]

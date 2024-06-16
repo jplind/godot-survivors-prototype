@@ -1,20 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhgfr6o7ynxoo"]
+[gd_scene load_steps=4 format=3 uid="uid://bhgfr6o7ynxoo"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_88d4b"]
 [ext_resource type="Resource" uid="uid://orqljugfgjhs" path="res://Enemy/Fly/fly_data.tres" id="2_2jycv"]
-[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="3_te8sr"]
 [ext_resource type="Texture2D" uid="uid://cvvk0dpbstdkj" path="res://Enemy/Fly/fly.png" id="4_rk5qo"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6fi1d"]
-resource_local_to_scene = true
-shader = ExtResource("3_te8sr")
-shader_parameter/flash_opacity = 0.0
-shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 
 [node name="EnemyFly" instance=ExtResource("1_88d4b")]
 scale = Vector2(0.9, 0.9)
 enemy_data = ExtResource("2_2jycv")
 
 [node name="Sprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_6fi1d")
 texture = ExtResource("4_rk5qo")
