@@ -39,6 +39,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 
 func despawn():
 	is_despawning = true
+	remove_from_group("enemies")
 	Events.enemy_despawned.emit()
 	var tween = create_tween()
 	tween.tween_property(sprite, "material:shader_parameter/dissolve_value", 0.0, 0.8)

@@ -13,6 +13,7 @@ func on_level_gained():
 	viable_upgrades.shuffle()
 	for card in viable_upgrades.slice(0, 3):
 		card.show()
+	viable_upgrades[0].grab_focus()
 	get_tree().paused = true
 	await Events.upgrade_picked
 	get_tree().paused = false

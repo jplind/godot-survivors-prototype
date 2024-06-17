@@ -200,21 +200,25 @@ theme_override_constants/separation = 20
 [node name="UpgradeCard2" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
+focus_mode = 2
 attribute = ExtResource("12_rbpvi")
 
 [node name="UpgradeCard3" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
+focus_mode = 2
 attribute = ExtResource("13_24unn")
 
 [node name="UpgradeCard4" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
+focus_mode = 2
 attribute = ExtResource("29_11rkc")
 
 [node name="UpgradeCard5" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("10_t2pd2")]
 visible = false
 layout_mode = 2
+focus_mode = 2
 attribute = ExtResource("27_wec5x")
 
 [node name="DamageNumberGenerator" type="Node2D" parent="."]

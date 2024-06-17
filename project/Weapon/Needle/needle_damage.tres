@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_e44r1")
 value = 0
-value_initial = 80
-value_scaling = 40
+value_initial = 60
+value_scaling = 30
 name = "Needle Damage"
 texture = ExtResource("2_h5psd")

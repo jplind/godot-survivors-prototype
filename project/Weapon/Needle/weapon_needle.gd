@@ -1,17 +1,17 @@
 extends Weapon
 
-var attack_spread : float = 10
+var attack_spread : float = 15
 #var closest_enemies : Array[Node]
 
 func launch_attack():
 	var attack : Attack = attack_scene.instantiate()
 	attack.position = player.position
-	#var closest_enemy : Enemy = get_tree().get_nodes_in_group("enemies").pick_random()
-	#for enemy in get_tree().get_nodes_in_group("enemies"):
-		#if player.position.distance_squared_to(enemy.position) < player.position.distance_squared_to(closest_enemy.position):
-			#closest_enemy = enemy
-	#attack.direction = player.position.direction_to(closest_enemy.position)
-	attack.direction = player.global_position.direction_to(get_global_mouse_position())
+	var closest_enemy : Enemy = get_tree().get_nodes_in_group("enemies").pick_random()
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if player.position.distance_squared_to(enemy.position) < player.position.distance_squared_to(closest_enemy.position):
+			closest_enemy = enemy
+	attack.direction = player.position.direction_to(closest_enemy.position)
+	#attack.direction = player.global_position.direction_to(get_global_mouse_position())
 	#closest_enemies = get_tree().get_nodes_in_group("enemies")
 	#closest_enemies.sort_custom(sort_closest)
 	#attack.direction = player.position.direction_to(closest_enemies.pop_front().position)
@@ -33,7 +33,12 @@ func launch_chain_attack():
 		#return
 	var attack : Attack = attack_scene.instantiate()
 	attack.position = player.position
-	var direction = player.global_position.direction_to(get_global_mouse_position())
+	var closest_enemy : Enemy = get_tree().get_nodes_in_group("enemies").pick_random()
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if player.position.distance_squared_to(enemy.position) < player.position.distance_squared_to(closest_enemy.position):
+			closest_enemy = enemy
+	var direction = player.position.direction_to(closest_enemy.position)
+	#var direction = player.global_position.direction_to(get_global_mouse_position())
 	#var direction = player.position.direction_to(closest_enemies.pop_front().position)
 	#var closest_enemy : Enemy = get_tree().get_nodes_in_group("enemies").pick_random()
 	#for enemy in get_tree().get_nodes_in_group("enemies"):
