@@ -7,7 +7,6 @@ var player
 var is_stunned : bool = false
 var is_despawning : bool = false
 var movement_delta
-var despawn_shader : Shader = preload("res://Enemy/eneym_despawn.gdshader")
 @onready var navigation_agent_2d = %NavigationAgent2D
 @onready var stun_timer = %StunTimer
 @onready var sprite = $Sprite2D

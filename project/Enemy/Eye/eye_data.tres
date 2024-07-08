@@ -6,5 +6,5 @@
 script = ExtResource("1_63dlm")
 minute_added = 12
 minute_removed = 14
-health = 335
+health = 380
 speed = 75

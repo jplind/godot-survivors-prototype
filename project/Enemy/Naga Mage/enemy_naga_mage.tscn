@@ -1,8 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://mpryk6v2j15h"]
+[gd_scene load_steps=13 format=3 uid="uid://mpryk6v2j15h"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_at8gk"]
 [ext_resource type="Resource" uid="uid://qfnbdsmssiuf" path="res://Enemy/Naga Mage/naga_mage_data.tres" id="2_dq2sp"]
+[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="2_gb0c0"]
 [ext_resource type="Texture2D" uid="uid://c73em4411apa4" path="res://Enemy/Naga Mage/naga_mage.png" id="3_6068i"]
+[ext_resource type="Material" uid="uid://mxypioyuyx3b" path="res://Enemy/enemy_material.tres" id="4_4y6r0"]
+
+[sub_resource type="Gradient" id="Gradient_ug4q5"]
+offsets = PackedFloat32Array(0.440298, 0.597015, 0.723881, 0.850746, 0.962687)
+colors = PackedColorArray(0, 0, 0, 1, 0.819608, 0.705882, 0, 1, 0.884202, 0.413088, 0.0982762, 1, 1, 0.0392157, 0.0862745, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3vqv"]
+gradient = SubResource("Gradient_ug4q5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_di4am"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pf4e4"]
+noise = SubResource("FastNoiseLite_di4am")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bcths"]
+resource_local_to_scene = true
+shader = ExtResource("2_gb0c0")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_gradient = SubResource("GradientTexture2D_i3vqv")
+shader_parameter/noise = SubResource("NoiseTexture2D_pf4e4")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fwc5k"]
 radius = 22.0
@@ -11,10 +34,12 @@ radius = 22.0
 radius = 22.0
 
 [node name="EnemyNagaMage" instance=ExtResource("1_at8gk")]
+material = SubResource("ShaderMaterial_bcths")
 scale = Vector2(1.25, 1.25)
 enemy_data = ExtResource("2_dq2sp")
 
 [node name="Sprite2D" parent="." index="0"]
+material = ExtResource("4_4y6r0")
 texture = ExtResource("3_6068i")
 offset = Vector2(0, -3)
 

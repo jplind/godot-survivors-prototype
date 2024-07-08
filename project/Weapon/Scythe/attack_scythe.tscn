@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ny25gindkc24"]
+[gd_scene load_steps=7 format=3 uid="uid://ny25gindkc24"]
 
 [ext_resource type="PackedScene" uid="uid://c7okn5ros3fk6" path="res://Weapon/attack.tscn" id="1_0hqqo"]
 [ext_resource type="Script" path="res://Weapon/Scythe/attack_scythe.gd" id="2_ekxar"]
@@ -6,7 +6,10 @@
 [ext_resource type="Resource" uid="uid://c3gxhmjrg27gn" path="res://Weapon/Scythe/scythe_data.tres" id="3_qf7ik"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kjfxs"]
-height = 55.3133
+radius = 8.0
+height = 55.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jyv2"]
 
 [node name="AttackScythe" instance=ExtResource("1_0hqqo")]
 script = ExtResource("2_ekxar")
@@ -16,6 +19,14 @@ weapon_data = ExtResource("3_qf7ik")
 texture = ExtResource("2_tirse")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(0, -17)
+position = Vector2(0, -18)
 rotation = -1.36412
 shape = SubResource("CapsuleShape2D_kjfxs")
+
+[node name="PlayerDetection" type="Area2D" parent="." index="3"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0"]
+shape = SubResource("CircleShape2D_1jyv2")
+
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]

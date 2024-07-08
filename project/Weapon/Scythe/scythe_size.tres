@@ -7,6 +7,6 @@
 script = ExtResource("1_kve2k")
 value = 0.0
 value_initial = 1.0
-value_scaling = 0.14
+value_scaling = 0.16
 name = "Scythe Size"
 texture = ExtResource("2_htavv")

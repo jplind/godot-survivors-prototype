@@ -1,7 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvf5jwhieeswa"]
+[gd_scene load_steps=12 format=3 uid="uid://bvf5jwhieeswa"]
 
 [ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_fvd7b"]
 [ext_resource type="Resource" uid="uid://ujoog3n8tkhp" path="res://Enemy/Skull/skull_data.tres" id="2_o3oce"]
+[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="2_wd6yj"]
+[ext_resource type="Material" uid="uid://mxypioyuyx3b" path="res://Enemy/enemy_material.tres" id="4_wimar"]
+
+[sub_resource type="Gradient" id="Gradient_ug4q5"]
+offsets = PackedFloat32Array(0.440298, 0.597015, 0.723881, 0.850746, 0.962687)
+colors = PackedColorArray(0, 0, 0, 1, 0.819608, 0.705882, 0, 1, 0.884202, 0.413088, 0.0982762, 1, 1, 0.0392157, 0.0862745, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3vqv"]
+gradient = SubResource("Gradient_ug4q5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_di4am"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pf4e4"]
+noise = SubResource("FastNoiseLite_di4am")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sgfm"]
+resource_local_to_scene = true
+shader = ExtResource("2_wd6yj")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_gradient = SubResource("GradientTexture2D_i3vqv")
+shader_parameter/noise = SubResource("NoiseTexture2D_pf4e4")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbvjh"]
 radius = 20.0
@@ -10,9 +33,11 @@ radius = 20.0
 radius = 20.0
 
 [node name="EnemySkull" instance=ExtResource("1_fvd7b")]
+material = SubResource("ShaderMaterial_5sgfm")
 enemy_data = ExtResource("2_o3oce")
 
 [node name="Sprite2D" parent="." index="0"]
+material = ExtResource("4_wimar")
 offset = Vector2(0, 4)
 
 [node name="NavigationAgent2D" parent="." index="1"]

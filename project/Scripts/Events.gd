@@ -12,4 +12,3 @@ signal upgrade_picked
 signal upgrade_maxed(upgrade_card : UpgradeCard)
 signal clock_seconds_changed(value : int)
 signal clock_minutes_changed(value : int)
-signal viable_enemies_changed(enemies : Array[Enemy])
