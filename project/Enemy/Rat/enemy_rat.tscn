@@ -1,0 +1,193 @@
+[gd_scene load_steps=34 format=3 uid="uid://v7g5ub07wsmw"]
+
+[ext_resource type="PackedScene" uid="uid://cn1v41nj5v32j" path="res://Enemy/enemy.tscn" id="1_jgwti"]
+[ext_resource type="Shader" path="res://Enemy/enemy.gdshader" id="2_ed4ap"]
+[ext_resource type="Resource" uid="uid://t2eyk5kktxu5" path="res://Enemy/Rat/rat_data.tres" id="3_pust7"]
+[ext_resource type="Material" uid="uid://mxypioyuyx3b" path="res://Enemy/enemy_material.tres" id="4_8dpuj"]
+[ext_resource type="Texture2D" uid="uid://csenh8ggw6wy1" path="res://Enemy/Rat/48x48Rat_Idle.png" id="5_7bpo7"]
+[ext_resource type="Texture2D" uid="uid://bgs0vco5atgvn" path="res://Enemy/Rat/rat_death/row-1-column-1.png" id="5_8wsq0"]
+[ext_resource type="Texture2D" uid="uid://bf4vfftapk1k1" path="res://Enemy/Rat/48x48Rat_Run.png" id="6_gv5xc"]
+[ext_resource type="Texture2D" uid="uid://boruf0sg3p42h" path="res://Enemy/Rat/rat_death/row-1-column-2.png" id="6_jkriv"]
+[ext_resource type="Texture2D" uid="uid://cpjgfa7nks1f4" path="res://Enemy/Rat/rat_death/row-1-column-3.png" id="7_k6rfn"]
+[ext_resource type="Texture2D" uid="uid://b5psgll7o5hmc" path="res://Enemy/Rat/rat_death/row-1-column-4.png" id="8_tc53u"]
+[ext_resource type="Texture2D" uid="uid://cfjqe2sxrowa" path="res://Enemy/Rat/rat_death/row-1-column-5.png" id="9_18m0n"]
+
+[sub_resource type="Gradient" id="Gradient_ug4q5"]
+offsets = PackedFloat32Array(0.440298, 0.597015, 0.723881, 0.850746, 0.962687)
+colors = PackedColorArray(0, 0, 0, 1, 0.819608, 0.705882, 0, 1, 0.884202, 0.413088, 0.0982762, 1, 1, 0.0392157, 0.0862745, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3vqv"]
+gradient = SubResource("Gradient_ug4q5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_di4am"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pf4e4"]
+noise = SubResource("FastNoiseLite_di4am")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_412ah"]
+resource_local_to_scene = true
+shader = ExtResource("2_ed4ap")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/offset = null
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_gradient = SubResource("GradientTexture2D_i3vqv")
+shader_parameter/noise = SubResource("NoiseTexture2D_pf4e4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6rlx"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81dvu"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxvgb"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnpym"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcnb4"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwqgt"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16x78"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ami1r"]
+atlas = ExtResource("5_7bpo7")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwbqn"]
+atlas = ExtResource("6_gv5xc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfv4j"]
+atlas = ExtResource("6_gv5xc")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t4j3"]
+atlas = ExtResource("6_gv5xc")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh64t"]
+atlas = ExtResource("6_gv5xc")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m10ta"]
+atlas = ExtResource("6_gv5xc")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5wge"]
+atlas = ExtResource("6_gv5xc")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ros1f"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8wsq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jkriv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k6rfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tc53u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_18m0n")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6rlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81dvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxvgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnpym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcnb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwqgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16x78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ami1r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwbqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfv4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t4j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh64t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m10ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5wge")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jaf0o"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2nn0"]
+radius = 15.0
+
+[node name="EnemyRat" instance=ExtResource("1_jgwti")]
+material = SubResource("ShaderMaterial_412ah")
+enemy_data = ExtResource("3_pust7")
+
+[node name="Sprite2D" parent="." index="0"]
+material = ExtResource("4_8dpuj")
+sprite_frames = SubResource("SpriteFrames_ros1f")
+animation = &"die"
+offset = Vector2(-3, -16)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_jaf0o")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_i2nn0")

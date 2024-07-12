@@ -18,7 +18,7 @@ var is_returning : bool = false
 func _ready():
 	super()
 	speed = 0
-	velocity = initial_velocity
+	#velocity = initial_velocity
 
 func move(delta):
 	if is_returning:

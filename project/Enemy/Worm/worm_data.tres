@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://b2tvtlu47cqep"]
+
+[ext_resource type="Script" path="res://Enemy/enemy_data.gd" id="1_c3ppa"]
+
+[resource]
+script = ExtResource("1_c3ppa")
+minute_added = 0
+minute_removed = 2
+health = 50
+speed = 50
