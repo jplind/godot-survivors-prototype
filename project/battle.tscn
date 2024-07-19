@@ -1,0 +1,229 @@
+[gd_scene load_steps=26 format=3 uid="uid://b7f7t2q76vusn"]
+
+[ext_resource type="Script" path="res://battle.gd" id="1_bbtal"]
+[ext_resource type="TileSet" uid="uid://pj0ek743wgci" path="res://TileMap/grass_tileset.tres" id="2_ogsvb"]
+[ext_resource type="Script" path="res://TileMap/map.gd" id="3_fh5vb"]
+[ext_resource type="Script" path="res://Enemy/enemy_spawner.gd" id="4_10dmi"]
+[ext_resource type="PackedScene" uid="uid://v7g5ub07wsmw" path="res://Enemy/Rat/enemy_rat.tscn" id="5_iplok"]
+[ext_resource type="PackedScene" uid="uid://c02r6psnw81ry" path="res://Enemy/Worm/enemy_worm.tscn" id="6_0ba35"]
+[ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Player/player.tscn" id="7_kiy84"]
+[ext_resource type="Script" path="res://UI/game_clock.gd" id="8_0bjo2"]
+[ext_resource type="Script" path="res://Enemy/enemy_progression.gd" id="9_urtdw"]
+[ext_resource type="Script" path="res://UI/game_clock_ui.gd" id="10_h33hp"]
+[ext_resource type="FontFile" uid="uid://dkgglilqpmisb" path="res://UI/Fonts/Dark Crystal Outline.ttf" id="11_t0hay"]
+[ext_resource type="Theme" uid="uid://cgcqsv5lajjoe" path="res://UI/Themes/button_theme.tres" id="12_fb64m"]
+[ext_resource type="PackedScene" uid="uid://y367tfhui5xy" path="res://Level Progression/upgrade_card.tscn" id="13_hilwq"]
+[ext_resource type="Resource" uid="uid://cdnad646wyr24" path="res://Weapon/Needle/needle_damage.tres" id="14_5kvkj"]
+[ext_resource type="Resource" uid="uid://dx2ml3df5rdap" path="res://Weapon/Scythe/scythe_damage.tres" id="15_ko1f0"]
+[ext_resource type="Resource" uid="uid://bjqfqw027ai13" path="res://Weapon/Scythe/scythe_size.tres" id="16_mdqh0"]
+[ext_resource type="Resource" uid="uid://bvmwblfpslxr0" path="res://Weapon/Needle/needle_quantity.tres" id="17_02hve"]
+[ext_resource type="Script" path="res://UI/Damage Number/damag_number_generator.gd" id="18_a6313"]
+[ext_resource type="PackedScene" uid="uid://b0rwu8wjsft0r" path="res://UI/Damage Number/damage_number.tscn" id="19_mpvqe"]
+[ext_resource type="Script" path="res://Collectable/collectable_spawner.gd" id="20_ti5bt"]
+[ext_resource type="PackedScene" uid="uid://bne0tt77bveng" path="res://Collectable/Book/collectable_experience.tscn" id="21_v5up2"]
+[ext_resource type="PackedScene" uid="uid://bly7yxln6q7rw" path="res://Collectable/Fruit/collectable_health.tscn" id="22_tad3n"]
+[ext_resource type="Script" path="res://Level Progression/experience_counter.gd" id="23_gmqbt"]
+[ext_resource type="Script" path="res://Level Progression/levelup_manager.gd" id="24_nj0xh"]
+[ext_resource type="PackedScene" uid="uid://dniqa17jftyc5" path="res://Weapon/Scythe/weapon_scythe.tscn" id="26_g5fh2"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_bbtal")
+
+[node name="Map" type="TileMap" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_set = ExtResource("2_ogsvb")
+format = 2
+script = ExtResource("3_fh5vb")
+player = NodePath("../Player")
+
+[node name="ChunkUpdateTimer" type="Timer" parent="Map"]
+wait_time = 5.0
+autostart = true
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_10dmi")
+all_enemy_scenes = Array[PackedScene]([ExtResource("5_iplok"), ExtResource("6_0ba35")])
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
+[node name="SpawnedEnemies" type="Node2D" parent="EnemySpawner"]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("7_kiy84")]
+unique_name_in_owner = true
+
+[node name="GameClock" type="Node" parent="."]
+script = ExtResource("8_0bjo2")
+
+[node name="SecondsTimer" type="Timer" parent="GameClock"]
+unique_name_in_owner = true
+autostart = true
+
+[node name="EnemyProgression" type="Node" parent="."]
+script = ExtResource("9_urtdw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "LV: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 960.0
+offset_bottom = 60.0
+
+[node name="ExperienceBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 200.0
+step = 1.0
+show_percentage = false
+
+[node name="GameClockUI" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("10_h33hp")
+
+[node name="MinutesLabel" type="Label" parent="CanvasLayer/VBoxContainer/GameClockUI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColonLabel" type="Label" parent="CanvasLayer/VBoxContainer/GameClockUI"]
+layout_mode = 2
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondsLabel" type="Label" parent="CanvasLayer/VBoxContainer/GameClockUI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameoverMenu" type="VBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -210.0
+offset_right = 132.5
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="GameoverLabel" type="Label" parent="CanvasLayer/GameoverMenu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.694118, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 30
+theme_override_fonts/font = ExtResource("11_t0hay")
+theme_override_font_sizes/font_size = 60
+text = "GameOver"
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameoverMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("12_fb64m")
+text = "Retry"
+
+[node name="LevelUpMenu" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -220.0
+offset_right = 220.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/LevelUpMenu"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UpgradeCards" type="VBoxContainer" parent="CanvasLayer/LevelUpMenu/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="UpgradeCard2" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("13_hilwq")]
+visible = false
+layout_mode = 2
+focus_mode = 2
+attribute = ExtResource("14_5kvkj")
+
+[node name="UpgradeCard3" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("13_hilwq")]
+visible = false
+layout_mode = 2
+focus_mode = 2
+attribute = ExtResource("15_ko1f0")
+
+[node name="UpgradeCard4" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("13_hilwq")]
+visible = false
+layout_mode = 2
+focus_mode = 2
+attribute = ExtResource("16_mdqh0")
+
+[node name="UpgradeCard5" parent="CanvasLayer/LevelUpMenu/CenterContainer/UpgradeCards" instance=ExtResource("13_hilwq")]
+visible = false
+layout_mode = 2
+focus_mode = 2
+attribute = ExtResource("17_02hve")
+
+[node name="DamageNumberGenerator" type="Node2D" parent="."]
+script = ExtResource("18_a6313")
+damage_number_scene = ExtResource("19_mpvqe")
+
+[node name="CollectableSpawner" type="Node2D" parent="."]
+script = ExtResource("20_ti5bt")
+collectable_scenes = Array[PackedScene]([ExtResource("21_v5up2"), ExtResource("22_tad3n")])
+
+[node name="SpawnedCollectables" type="Node2D" parent="CollectableSpawner"]
+unique_name_in_owner = true
+
+[node name="ExperienceCounter" type="Node" parent="."]
+script = ExtResource("23_gmqbt")
+
+[node name="LevelupManager" type="Node" parent="."]
+script = ExtResource("24_nj0xh")
+
+[node name="WeaponScythe" parent="." node_paths=PackedStringArray("player") instance=ExtResource("26_g5fh2")]
+player = NodePath("../Player")
+
+[connection signal="timeout" from="Map/ChunkUpdateTimer" to="Map" method="_on_chunk_update_timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/EnemySpawnTimer" to="EnemySpawner" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="GameClock/SecondsTimer" to="GameClock" method="_on_second_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/GameoverMenu/RetryButton" to="." method="_on_restart_button_pressed"]

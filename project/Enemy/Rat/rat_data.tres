@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rm027")
-minute_added = 0
-minute_removed = 2
-health = 40
-speed = 80
+health = 50
+attack_range = 100.0
+idle_repeat_chance = 0.1
+idle_after_move_chance = 0.25

@@ -11,7 +11,6 @@ var dead = false
 @onready var health_bar = %HealthBar
 @onready var hit_timer = %HitTimer
 @onready var sprite : AnimatedSprite2D = %AnimatedSprite2D
-@onready var animation_tree : AnimationTree = %AnimationTree
 
 func _ready():
 	Events.battle_started.connect(on_battle_started)
@@ -33,7 +32,6 @@ func _process(delta):
 	if dead:
 		return
 	get_input()
-	update_animation_tree()
 	if direction:
 		position += direction * speed * delta
 		sprite.play("move")
@@ -56,10 +54,10 @@ func update_health_bar():
 
 func die():
 	dead = true
-	sprite.play("die")
 	health_bar.hide()
 	direction = Vector2.ZERO
 	Events.player_died.emit()
+	sprite.play("die")
 
 func on_battle_started():
 	hit_timer.start()
@@ -79,7 +77,3 @@ func _on_collectable_pull_area_entered(area):
 		return
 	area.owner.pulled = true
 	area.owner.player = self
-
-func update_animation_tree():
-	animation_tree.set("parameters/conditions/is_idle", direction == Vector2.ZERO)
-	animation_tree.set("parameters/conditions/is_moving", direction != Vector2.ZERO)

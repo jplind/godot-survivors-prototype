@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_x37ey")
 value = 0
-value_initial = 60
-value_scaling = 30
+value_initial = 30
+value_scaling = 15
 name = "Scythe Damage"
 texture = ExtResource("2_67qva")

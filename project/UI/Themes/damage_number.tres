@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cldons7s4b6w7"]
+
+[ext_resource type="FontFile" uid="uid://c0dyp000u863o" path="res://UI/Fonts/Lunchtime Doubly So Regular.ttf" id="1_mwgh5"]
+
+[resource]
+Label/colors/font_color = Color(0.991606, 1, 0.496144, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 20
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_mwgh5")

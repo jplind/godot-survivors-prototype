@@ -11,18 +11,18 @@ config_version=5
 [application]
 
 config/name="Survivors"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Enemy/Old/Skull/skull.png"
+config/icon="res://Weapon/Scythe/scythe.png"
 
 [autoload]
 
-Events="*res://Scripts/Events.gd"
-Enums="*res://enums.gd"
+Events="*res://Events.gd"
 
 [debug]
 
 gdscript/warnings/unused_parameter=0
+gdscript/warnings/integer_division=0
 
 [display]
 
@@ -34,11 +34,12 @@ window/stretch/scale_mode="integer"
 
 [editor]
 
-movie_writer/movie_file="E:/Petter/Videos/Godot/survivors.avi"
+movie_writer/mjpeg_quality=0.1
+movie_writer/movie_file="res://movie.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg")
+enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [input]
 

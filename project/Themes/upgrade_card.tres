@@ -1,8 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://r8ouwhij628m"]
-
-[ext_resource type="FontFile" uid="uid://c0dyp000u863o" path="res://Fonts/Lunchtime Doubly So Regular.ttf" id="1_ygtlk"]
-
-[resource]
-default_font = ExtResource("1_ygtlk")
-Label/font_sizes/font_size = 28
-Label/fonts/font = ExtResource("1_ygtlk")

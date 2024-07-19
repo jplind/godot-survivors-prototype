@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cke288rhj6ajb"]
+[gd_scene load_steps=33 format=3 uid="uid://cke288rhj6ajb"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_ysopc"]
 [ext_resource type="Texture2D" uid="uid://h7ybvjsf0jot" path="res://Player/Necromancer_creativekind-Sheet.png" id="2_oyq5y"]
@@ -142,7 +142,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -171,7 +171,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 10.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -200,7 +200,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojr1j"]
@@ -216,42 +216,21 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [sub_resource type="CircleShape2D" id="CircleShape2D_8d1ul"]
 radius = 90.0
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dn8xl"]
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5hqir"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_guof8"]
-advance_mode = 2
-advance_condition = &"is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d3mov"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n248r"]
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n6384"]
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_dn8xl")
-states/Idle/position = Vector2(408, 89)
-states/Move/node = SubResource("AnimationNodeBlendSpace2D_5hqir")
-states/Move/position = Vector2(606, 89)
-transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_guof8"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_d3mov"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_n248r")]
-
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ysopc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(2, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lpxct")
-animation = &"die"
-offset = Vector2(0, -28)
+animation = &"idle"
+frame_progress = 0.277494
+offset = Vector2(0, -40)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -10)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -269,9 +248,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -40.0
-offset_top = 58.0
+offset_top = 40.0
 offset_right = 40.0
-offset_bottom = 73.0
+offset_bottom = 55.0
 grow_horizontal = 2
 max_value = 200.0
 step = 1.0
@@ -289,15 +268,6 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectablePull"]
 shape = SubResource("CircleShape2D_8d1ul")
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-unique_name_in_owner = true
-tree_root = SubResource("AnimationNodeStateMachine_n6384")
-anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/is_idle = false
-parameters/conditions/is_moving = false
-parameters/Idle/blend_position = Vector2(0, 0)
-parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

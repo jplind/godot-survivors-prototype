@@ -223,7 +223,6 @@ material = ExtResource("4_k5oq2")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_x60mt")
 animation = &"die"
-frame_progress = 1.0
 offset = Vector2(15, -20)
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
