@@ -412,11 +412,17 @@ material = ExtResource("4_u3k8y")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mj4fx")
 animation = &"attack"
-offset = Vector2(0, -21)
+offset = Vector2(0, -24)
+
+[node name="HitBox" parent="." index="3"]
+position = Vector2(0, -8)
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_a33ik")
+
+[node name="HurtBox" parent="." index="4"]
+position = Vector2(0, -8)
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 rotation = 1.5708

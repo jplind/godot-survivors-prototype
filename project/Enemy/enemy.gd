@@ -18,6 +18,7 @@ var animation_player : AnimationPlayer
 var is_flipped : bool = false
 var using_avoidance : bool = false
 var movement_tween : Tween = null
+var direction : Vector2
 
 func _ready():
 	health = enemy_data.health
@@ -28,11 +29,10 @@ func _ready():
 
 func on_player_died():
 	game_over = true
+	if is_instance_valid(navigation_agent_2d):
+		navigation_agent_2d.target_position = Vector2(randf_range(-10000, 10000), randf_range(-10000, 10000))
 
-func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	if not using_avoidance:
-		return
-	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
+
 
 func _on_hurt_box_area_entered(area):
 	var damage : int = int(randfn(area.owner.damage, area.owner.damage * 0.08))
@@ -47,28 +47,43 @@ func _on_idle_state_entered():
 
 #region Move State
 func _on_move_state_entered():
-	animation_player.play("move")
 	using_avoidance = true
 	if game_over:
 		navigation_agent_2d.target_position = Vector2(randf_range(-10000, 10000), randf_range(-10000, 10000))
+	move()
 
 func _on_move_state_exited():
 	using_avoidance = false
 
-func _on_move_state_physics_processing(delta):
+func move():
 	if not game_over:
 		navigation_agent_2d.target_position = player.global_position
 	if navigation_agent_2d.is_navigation_finished():
+		state_chart.send_event("attack")
 		return
-	movement_delta = delta * speed
+	direction = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+	animation_player.play("move")
+
+func _on_move_state_physics_processing(delta):
+	#if not game_over:
+		#navigation_agent_2d.target_position = player.global_position
+	#if navigation_agent_2d.is_navigation_finished():
+		#return
+	movement_delta = delta
 	navigation_agent_2d.max_speed = speed
-	navigation_agent_2d.velocity = global_position.direction_to(navigation_agent_2d.get_next_path_position()) * speed
-	if navigation_agent_2d.velocity.x < -2 and not is_flipped:
+	navigation_agent_2d.velocity = direction * speed
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	if not using_avoidance:
+		return
+	if safe_velocity.x < -2 and not is_flipped:
 		scale.x *= -1
 		is_flipped = true
-	elif navigation_agent_2d.velocity.x > 2 and is_flipped:
+	elif safe_velocity.x > 2 and is_flipped:
 		scale.x *= -1
 		is_flipped = false
+	global_position += safe_velocity * movement_delta
+	#global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 #endregion
 
 #region Hit State
@@ -157,11 +172,8 @@ func on_animation_finished(anim_name : String):
 				if global_position.distance_to(player.global_position) < enemy_data.attack_range:
 					state_chart.send_event("attack")
 					return
-			animation_player.play("move")
+			move()
 		"attack":
-			if randf() < 0.5:
-				state_chart.send_event("idle")
-			else:
-				state_chart.send_event("move")
+			state_chart.send_event("idle")
 		"death":
 			despawn()

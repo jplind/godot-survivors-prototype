@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7f7t2q76vusn"]
+[gd_scene load_steps=27 format=3 uid="uid://b7f7t2q76vusn"]
 
 [ext_resource type="Script" path="res://battle.gd" id="1_bbtal"]
 [ext_resource type="TileSet" uid="uid://pj0ek743wgci" path="res://TileMap/grass_tileset.tres" id="2_ogsvb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Enemy/enemy_spawner.gd" id="4_10dmi"]
 [ext_resource type="PackedScene" uid="uid://v7g5ub07wsmw" path="res://Enemy/Rat/enemy_rat.tscn" id="5_iplok"]
 [ext_resource type="PackedScene" uid="uid://c02r6psnw81ry" path="res://Enemy/Worm/enemy_worm.tscn" id="6_0ba35"]
+[ext_resource type="PackedScene" uid="uid://bqv7nu7t3vc0u" path="res://Enemy/Wolf/enemy_wolf.tscn" id="7_51loj"]
 [ext_resource type="PackedScene" uid="uid://cke288rhj6ajb" path="res://Player/player.tscn" id="7_kiy84"]
 [ext_resource type="Script" path="res://UI/game_clock.gd" id="8_0bjo2"]
 [ext_resource type="Script" path="res://Enemy/enemy_progression.gd" id="9_urtdw"]
@@ -45,7 +46,7 @@ autostart = true
 [node name="EnemySpawner" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_10dmi")
-all_enemy_scenes = Array[PackedScene]([ExtResource("5_iplok"), ExtResource("6_0ba35")])
+all_enemy_scenes = Array[PackedScene]([ExtResource("5_iplok"), ExtResource("6_0ba35"), ExtResource("7_51loj")])
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawner"]
 unique_name_in_owner = true

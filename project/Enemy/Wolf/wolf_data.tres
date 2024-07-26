@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://b8u3sm2e0qx5h"]
+
+[ext_resource type="Script" path="res://Enemy/enemy_data.gd" id="1_jf56j"]
+
+[resource]
+script = ExtResource("1_jf56j")
+health = 150
+attack_range = 150.0
+idle_repeat_chance = 0.5
+idle_after_move_chance = 0.05
