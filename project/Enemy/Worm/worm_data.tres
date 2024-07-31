@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_c3ppa")
 health = 80
-attack_range = 130.0
+attack_range = 120.0
 idle_repeat_chance = 0.15
 idle_after_move_chance = 0.75

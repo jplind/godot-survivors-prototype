@@ -57,7 +57,6 @@ func _on_idle_state_entered():
 #region Move State
 func _on_move_state_entered():
 	#using_avoidance = true
-	animation_player.speed_scale = 1.25
 	animation_player.play("move")
 	if game_over:
 		random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -65,7 +64,6 @@ func _on_move_state_entered():
 
 func _on_move_state_exited():
 	using_avoidance = false
-	animation_player.speed_scale = 1
 
 func move(delta):
 	#if not game_over:
