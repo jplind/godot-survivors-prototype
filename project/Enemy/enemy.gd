@@ -3,7 +3,7 @@ class_name Enemy extends CharacterBody2D
 @export var enemy_data : EnemyData
 var health : int
 @export var speed : int
-var player
+var player : Node2D
 var game_over : bool = false
 var is_stunned : bool = false
 var is_despawning : bool = false
@@ -14,7 +14,8 @@ var animation_player : AnimationPlayer
 @onready var stun_timer = %StunTimer
 @onready var sprite = $Sprite2D
 @onready var state_chart = %StateChart
-
+@onready var avoidance = %Avoidance
+@onready var random_direction := Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 var is_flipped : bool = false
 var using_avoidance : bool = false
 var movement_tween : Tween = null
@@ -26,13 +27,21 @@ func _ready():
 	sprite.material.set_shader_parameter("offset", Vector2(randf_range(-1, 1), randf_range(-1, 1)))
 	animation_player = %AnimationPlayer
 	animation_player.animation_finished.connect(on_animation_finished)
+	direction = global_position.direction_to(player.global_position)
+	flip_sprite()
+
+func flip_sprite():
+	if direction.x < -0.01 and not is_flipped:
+		scale.x *= -1
+		is_flipped = true
+	elif direction.x > 0.01 and is_flipped:
+		scale.x *= -1
+		is_flipped = false
 
 func on_player_died():
 	game_over = true
 	if is_instance_valid(navigation_agent_2d):
 		navigation_agent_2d.target_position = Vector2(randf_range(-10000, 10000), randf_range(-10000, 10000))
-
-
 
 func _on_hurt_box_area_entered(area):
 	var damage : int = int(randfn(area.owner.damage, area.owner.damage * 0.08))
@@ -47,31 +56,48 @@ func _on_idle_state_entered():
 
 #region Move State
 func _on_move_state_entered():
-	using_avoidance = true
+	#using_avoidance = true
+	animation_player.speed_scale = 1.25
+	animation_player.play("move")
 	if game_over:
-		navigation_agent_2d.target_position = Vector2(randf_range(-10000, 10000), randf_range(-10000, 10000))
-	move()
+		random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	#move()
 
 func _on_move_state_exited():
 	using_avoidance = false
+	animation_player.speed_scale = 1
 
-func move():
-	if not game_over:
-		navigation_agent_2d.target_position = player.global_position
-	if navigation_agent_2d.is_navigation_finished():
-		state_chart.send_event("attack")
-		return
-	direction = global_position.direction_to(navigation_agent_2d.get_next_path_position())
-	animation_player.play("move")
+func move(delta):
+	#if not game_over:
+		#navigation_agent_2d.target_position = player.global_position
+	#if navigation_agent_2d.is_navigation_finished():
+		#state_chart.send_event("attack")
+		#return
+	#direction = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+	var new_direction : Vector2
+	if game_over:
+		new_direction = random_direction
+	else:
+		new_direction = global_position.direction_to(player.global_position)
+	for area : Area2D in avoidance.get_overlapping_areas():
+		var weight = 1.0 - global_position.distance_to(area.global_position) * 0.006
+		if weight > 0:
+			new_direction -= global_position.direction_to(area.global_position) * weight
+	new_direction = new_direction.normalized()
+	if new_direction.distance_squared_to(direction) > 0.01:
+		direction = direction.move_toward(new_direction, delta * 10).normalized()
+	flip_sprite()
 
 func _on_move_state_physics_processing(delta):
+	move(delta)
+	global_position += direction * speed * delta
 	#if not game_over:
 		#navigation_agent_2d.target_position = player.global_position
 	#if navigation_agent_2d.is_navigation_finished():
 		#return
-	movement_delta = delta
-	navigation_agent_2d.max_speed = speed
-	navigation_agent_2d.velocity = direction * speed
+	#movement_delta = delta
+	#navigation_agent_2d.max_speed = speed
+	#navigation_agent_2d.velocity = direction * speed
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	if not using_avoidance:
@@ -172,7 +198,7 @@ func on_animation_finished(anim_name : String):
 				if global_position.distance_to(player.global_position) < enemy_data.attack_range:
 					state_chart.send_event("attack")
 					return
-			move()
+			animation_player.play("move")
 		"attack":
 			state_chart.send_event("idle")
 		"death":

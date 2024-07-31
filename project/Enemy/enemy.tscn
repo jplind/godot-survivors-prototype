@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn1v41nj5v32j"]
+[gd_scene load_steps=10 format=3 uid="uid://cn1v41nj5v32j"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_7rt6w"]
 [ext_resource type="Material" uid="uid://mxypioyuyx3b" path="res://Enemy/enemy_material.tres" id="2_63dr3"]
@@ -12,6 +12,9 @@ radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nliq5"]
 radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7cvv"]
+radius = 80.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 material = ExtResource("2_63dr3")
@@ -147,6 +150,14 @@ delay_in_seconds = "0.0"
 
 [node name="Death" type="Node" parent="StateChart/Root"]
 script = ExtResource("5_eqo7u")
+
+[node name="Avoidance" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Avoidance"]
+shape = SubResource("CircleShape2D_n7cvv")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

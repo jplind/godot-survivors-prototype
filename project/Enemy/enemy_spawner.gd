@@ -21,14 +21,18 @@ func _on_enemy_spawn_timer_timeout():
 		return
 	if enemy_count > 500:
 		return
-	var enemy : Enemy = viable_enemy_scenes.pick_random().instantiate()
+	var enemy : Enemy 
+	if randf() < 0.05:
+		enemy = viable_enemy_scenes[2].instantiate()
+	else:
+		enemy = viable_enemy_scenes.slice(0, 2).pick_random().instantiate()
 	enemy.player = player
-	spawned_enemies.add_child(enemy)
 	var random_direction : Vector2 = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	if player.direction:
 		random_direction += player.direction * player_direction_weight
 		random_direction = random_direction.normalized()
 	enemy.position = player.position + random_direction * spawn_distance
+	spawned_enemies.add_child(enemy)
 	enemy_count += 1
 
 func on_clock_minutes_changed(minutes : int):
